@@ -23,21 +23,6 @@ fn <- paste0(dataFolder,inputFolder,"/landsatsr.csv")
 df <- read.table(fn,sep=",",header=T)
 df$date <- as.Date(df$date,format="%Y-%m-%d")
 
-bandNames = c("SR_B4", "SR_B5","SR_B7", "QA_PIXEL", "QA_RADSAT", "SR_QA_AEROSOL")
-indices <- filterThenIndex(df,sat="landsat8sr",bandNames=bandNames)
-
-colnames(indices) <- c("valid","ndvi","swir2")
-
-df <- data.table(df,indices)
-
-#bring in dates to be used for model runs
-base <- fread(paste0(dataFolder, pointData))
-base <- base[,.(pointid, datePre, dateDist,distPercL8)]
-setnames(base, old=c("datePre", "dateDist","distPercL8"),
-         new=c("date_model", "date_dist","dist_perc"))
-
-ids <- sort(unique(base[,pointid]))
-
 #update dates
 date_fn <- function(dae){
   date_true <- ifelse(is.na(as.Date(dae)) | (Sys.Date() - as.Date(dae)) > 10000, 
@@ -47,8 +32,7 @@ date_fn <- function(dae){
   return(date_true)
 }
 
-base <- base[, `:=` (date_model = date_fn(date_model),
-                     date_dist = date_fn(date_dist))]
+base <- base[, `:=` (date_dist = date_fn(dateDist))]
 
 get_moddate <- function(sat_list=sat_list){
   dat <- sat_list
@@ -59,14 +43,20 @@ get_moddate <- function(sat_list=sat_list){
 
 df <- get_moddate(data.table(df))
 
-#2. calculate NDVI and SWIR
+df$B11 <- df$B11*0.0000275-0.2
 
+ndvi <- transmute(df,ndvi=(B5-B4)/(B5+B4))
+swir2 <- transmute(df,swir2=B7*1e-4)
+goodquality <- transmute(df,goodquality=((pixel_qa==322)&(radsat_qa==0)&(sr_aerosol<=96)))
 
-# split into point ids for dataset with all corrupted points
-dfc <- split(df,df$pointid)
+df <- cbind(df,ndvi,swir2,goodquality)
+dfr <- dplyr::select(df,c("pointid","date_dist","date","goodquality","ndvi","swir2"))
+#dfr <- dplyr::filter(dfr,valid_cloudAndRadqa==T)
+# split into list of dfs
+dfc <- split(dfr,by="pointid")
 
 # split into point ids for pure dataset
-df_pure <- df %>% mutate(goodquality=valid)
+#df_pure <- df %>% mutate(goodquality=valid)
 #4. filter out bad qa
 df_pure <- df_pure %>% filter(goodquality)
 
@@ -78,8 +68,8 @@ dfl_pure <- lapply(dfl_pure,function(x){
   # filter
 })
 #3. Keep in some bad points
-corrupted <- sample(which(!df$valid&!is.na(df$ndvi)&!is.na(df$swir2)),200)
-df <- df %>% mutate(goodquality=valid)
+corrupted <- sample(which(!df$goodquality&!is.na(df$ndvi)&!is.na(df$swir2)),200)
+#df <- df %>% mutate(goodquality=valid)
 df$goodquality[corrupted] <- T
 #4. filter out bad qa
 df <- df %>% filter(goodquality)
@@ -95,19 +85,20 @@ dfl <- lapply(dfl,function(x){
   # filter
 })
 
-### Figure 1: SWIR, NDVI ts with filtered points
-#2. calculate NDVI and SWIR
-dfc <- dfc
-dfc <- F1_onboard$sat_list$l8sr
-dfc <- dfc %>% mutate(ndvi = (B5-B4)/(B5+B4))
-dfc <- dfc %>% mutate(swir2 = B7/1e4)
-dfc <- dfc %>% mutate(goodquality=valid_qa&valid_radsatqa&valid_aerosol&valid_cloudAndRadqa)
-
-dfcl <- split(dfc,dfc$pointid)
+# ### Figure 1: SWIR, NDVI ts with filtered points
+# #2. calculate NDVI and SWIR
+# dfc <- dfc
+# dfc <- F1_onboard$sat_list$l8sr
+# dfc <- dfc %>% mutate(ndvi = (B5-B4)/(B5+B4))
+# dfc <- dfc %>% mutate(swir2 = B7/1e4)
+# dfc <- dfc %>% mutate(goodquality=valid_qa&valid_radsatqa&valid_aerosol&valid_cloudAndRadqa)
+# 
+# dfcl <- split(dfc,dfc$pointid)
 #95 is okay, 92, 70, 68,65, 54. 70 is  great!
+dfcl <- dfc
 pit <- 70
 dfi <- dfcl[[pit]]
-png("Plots/Myanmar_data_swir2_QA.png",width=500,height=200)
+png("plots/Myanmar_data_swir2_QA.png",width=500,height=200)
 par(mfrow=c(1,1),mar=c(2,4,1,1),cex=1.5)
 plot(dfi$date,dfi$swir2,ylim=c(0,1),xlab="Year",ylab="SWIR2")
 points(dfi$date[dfi$goodquality==F],dfi$swir2[dfi$goodquality==F],pch=4,col=2,lwd=2)
@@ -115,14 +106,14 @@ points(dfi$date[44],dfi$swir2[44],pch=1,cex=2,col=4,lwd=2)
 
 dev.off()
 
-png("Plots/Myanmar_data_ndvi_QA.png",width=500,height=200)
+png("plots/Myanmar_data_ndvi_QA.png",width=500,height=200)
 par(mfrow=c(1,1),mar=c(2,4,1,1),cex=1.5)
 plot(dfi$date,dfi$ndvi,ylim=c(0,1),xlab="Year",ylab="NDVI")
 points(dfi$date[dfi$goodquality==F],dfi$ndvi[dfi$goodquality==F],pch=4,col=2,lwd=2)
 points(dfi$date[44],dfi$ndvi[44],pch=1,cex=2,col=4,lwd=2)
 dev.off()
 
-png("Plots/Myanmar_legend_QA.png",width=150,height=100)
+png("plots/Myanmar_legend_QA.png",width=150,height=100)
 par(mfrow=c(1,1),mar=c(0,0,0,0),cex=1.5)
 plot.new()
 legend("topleft",xpd=T,legend=c("Data","Invalid QA","Outlier"),col=c(1,2,4),pch=c(1,4,1),lwd=c(1,2,2),lty=c(NA,NA,NA))
@@ -131,6 +122,19 @@ dev.off()
 
 ####### Figure 2: Observed SWIR2 and NDVI measurements
 # visualization data (point 24)
+pit <- 24
+dfi <- dfl[[pit]]
+
+png("Plots/Myanmar_data.png",width=1000,height=200)
+par(mfrow=c(1,2),mar=c(2,4,1,1),cex=1.5)
+plot(dfi$date,dfi$swir2,ylim=c(0,1),xlab="Year",ylab="SWIR2")
+abline(v=dfi$date_dist,col=2)
+legend("topleft",legend=c("Data","Disturbance"),bty="n",lty=c(NA,1),col=c(1,2),pch=c(1,NA))
+plot(dfi$date,dfi$ndvi,ylim=c(0,1),xlab="Year",ylab="NDVI")
+abline(v=dfi$date_dist,col=2)
+dev.off()
+
+
 
 ####### Figure 3: Simulation signals with an outlier, run length plot, 
 # and state diagram
@@ -188,6 +192,108 @@ dev.off()
 
 ####### Figure 5: Myanmar results: (visualization data point 70)
 # with outliers removed and change dates shown
+load("results/myanmar_default.RData")
+load("results/myanmar_priors.RData")pit <- 1#73
+dfi <- dfl[[pit]]
+t <- dfi$t
+period <- 365
+# run bocpdod and pull out R
+X <- cbind(1,sin(2*pi*t/period),cos(2*pi*t/period),(t-min(t))/(max(t)-min(t)))
+
+Yi <- cbind(dfi$ndvi,dfi$swir2)
+
+# pull out change point number
+truecp <- dfi$ti[which(dfi$date_dist<=dfi$date)[1]]
+
+bocpd_mod_o <- roboBayes::roboBayes(datapts = Yi,
+                     covariates = X,
+                     RoboBayes = NULL,
+                     par_inits = piMine,
+                     Lsearch = 15,
+                     Lwindow = 8,
+                     Lgroup=3,
+                     lambda=100,
+                     cpthresh = 0.8,
+                     truncRmin = 300,
+                     cptimemin = 20,
+                     Lm = 8,
+                     cp_delay = 6,
+                     kt = 1,
+                     pc=0.5,
+                     alpha=0.9,
+                     getR = FALSE,
+                     getOutliers = TRUE,
+                     getModels = FALSE)
+
+# analyze using BOCPD
+bocpd_mod_no <- robomon(datapts = Yi,
+                                    covariates = X,
+                                    RoBOMon = NULL,
+                                    par_inits = piMine,
+                                    Lsearch = 15,
+                                    Lwindow = 8,
+                                    Lgroup=3,
+                                    lambda=100,
+                                    cpthresh = 0.8,
+                                    truncRmin = 300,
+                                    cptimemin = 20,
+                                    Lm = 8,
+                                    cp_delay = 6,
+                                    kt = 1,
+                                    pc=0.5,
+                                    alpha=0.9,
+                                    getR = FALSE,
+                                    getOutliers = TRUE,
+                                    getModels = FALSE)
+# cp_info <- extract_cps(bocpd_mod,truecp, 0.8,cpmin=12)
+# cp_info
+# output$bocpd_cps=cp_info$cp_dates
+# output$bocpd_det=cp_info$cp_detected
+# output$bocpd_lat=cp_info$cp_lat
+# output$bocpd_outliers=bocpd_mod$outliers
+
+
+# put outlier results in dfir
+dfio <- dfi[bocpd_mod_o$outliers,]
+
+library(fields)
+bocpd_mod <- bocpd_mod_o
+s1=expand.grid(1:nrow(bocpd_mod$R),1:ncol(bocpd_mod$R))
+thing1 <- data.frame(s1,R2=c(t(bocpd_mod$R)))
+names(thing1) <- c("s1","s2","R2")
+bocpd_mod <- bocpd_mod_no
+s1=expand.grid(1:nrow(bocpd_mod$R),1:ncol(bocpd_mod$R))
+thing2 <- data.frame(s1,R2=c(t(bocpd_mod$R)))
+names(thing2) <- c("s1","s2","R2")
+
+s=expand.grid(dfi$date,2:ncol(bocpd_mod$R))
+thing1 <- data.frame(s1,R2=c(t(bocpd_mod$R)))
+thing <- data.frame(s,R2=c(t(bocpd_mod$R[-1,-1])))
+names(thing1) <- c("s1","s2","R2")
+
+names(thing) <- c("s1","s2","R2")
+
+dfi$outliers_ndvi <- NA
+dfi$outliers_ndvi[bocpd_mod$outliers] <- dfi$ndvi[bocpd_mod$outliers]
+
+library(ggplot2)
+
+# now plot clean data for comparison
+png("Plots/Myanmar_data_1_swir2.png",width=4,height=1.5,units="in",res=1200)
+par(mfrow=c(1,1),mar=c(4,4,0.1,0.1),cex=0.7)
+plot(dfi$date,dfi$swir2,ylim=c(0,1),xlab="Year",ylab="SWIR2")
+abline(v=dfi$date[unique(unlist(bocpd_mod$cp_inds))[-1]],col="red",lwd=2)
+points(dfi$date[bocpd_mod$outliers],dfi$swir2[bocpd_mod$outliers],pch=4,col="red",lwd=2)
+legend("topleft",legend=c("data","outliers","disturbance"),bty="n",lty=c(NA,NA,1),lwd=c(NA,2,2),col=c(1,"red","red"),pch=c(1,4,NA))
+dev.off()
+png("Plots/Myanmar_data_1_ndvi.png",width=4,height=1.5,units="in",res=1200)
+par(mfrow=c(1,1),mar=c(4,4,0.1,0.1),cex=0.7)
+plot(dfi$date,dfi$ndvi,ylim=c(0,1),xlab="Year",ylab="NDVI")
+abline(v=dfi$date[unique(unlist(bocpd_mod$cp_inds))[-1]],col="red",lwd=2)
+points(dfi$date[bocpd_mod$outliers],dfi$ndvi[bocpd_mod$outliers],pch=4,col="red",lwd=2)
+dev.off()
+
+
 
 ####### Figure 6: Myanmar run lengths
 
@@ -435,12 +541,12 @@ pointids <- sort(unique(base[,pointid]))
 
 pointData <- trainingPointsFile
 
-fn <- paste0(dataFolder,inputFolder,"/landsat8sr.csv")
+fn <- paste0(dataFolder,inputFolder,"/landsatsr.csv")
 df <- read.table(fn,sep=",",header=T)
 df$date <- as.Date(df$date,format="%Y-%m-%d")
 
-bandNames = c("SR_B4", "SR_B5","SR_B7", "QA_PIXEL", "QA_RADSAT", "SR_QA_AEROSOL")
-indices <- filterThenIndex(df,sat="landsat8sr",bandNames=bandNames)
+bandNames = c("B4", "B5","B7", "QA_PIXEL", "QA_RADSAT", "SR_QA_AEROSOL")
+indices <- filterThenIndex(df,sat="landsatsr",bandNames=bandNames)
 
 colnames(indices) <- c("valid","ndvi","swir2")
 
