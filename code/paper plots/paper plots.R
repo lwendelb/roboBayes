@@ -192,8 +192,8 @@ dev.off()
 
 ####### Figure 5: Myanmar results: (visualization data point 70)
 # with outliers removed and change dates shown
-load("results/myanmar_default.RData")
-load("results/myanmar_priors.RData")pit <- 1#73
+load("paper plots/myanmar_default.RData")
+load("paper plots/myanmar_priors.RData")pit <- 1#73
 dfi <- dfl[[pit]]
 t <- dfi$t
 period <- 365
