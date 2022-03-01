@@ -1,0 +1,115 @@
+Timestamp,Email Address,nGroup,nPoly,pointOrig,pointNew,coordX,coordY,dateDist,datePre,distType,notes,distThresh,distPrev,dayDiff,location,pointid
+12/16/2020 15:06:14,imcgreg@ncsu.edu,0,1,0,1,97.65317,24.15859,2019-01-21,2019-01-20,Forest,"originally train21, shifted NW (train1 is in the S, so dropped)",1,0,1,myanmar,001_1
+12/16/2020 15:08:17,imcgreg@ncsu.edu,0,1,0,1,97.65523,24.15829,2019-01-21,2019-01-20,Forest,there are other small disturbances around here if need more points,2,0,1,myanmar,001_2
+12/16/2020 11:29:35,imcgreg@ncsu.edu,0,2,0,1,97.35255278,23.47673056,2019-03-25,2019-03-23,Forest,originally train2,1,1,2,myanmar,002_3
+12/16/2020 11:32:55,imcgreg@ncsu.edu,0,3,1,0,97.902125,23.17163056,2019-01-26,2019-01-21,Forest,originally train3,1,0,5,myanmar,003_4
+12/16/2020 11:35:08,imcgreg@ncsu.edu,0,4,0,1,97.37799167,23.53859722,2019-02-21,2019-02-19,Forest,originally train4,1,0,2,myanmar,004_5
+12/16/2020 11:45:31,imcgreg@ncsu.edu,0,5,0,1,98.19093333,21.955775,2019-11-12,2019-11-03,Road,originally train5,1,0,9,myanmar,005_6
+12/16/2020 11:56:41,imcgreg@ncsu.edu,0,6,0,1,96.44944,22.66764,2019-02-06,2019-02-02,Forest,"originally train6, moved west slightly",1,0,4,myanmar,006_7
+12/16/2020 11:58:48,imcgreg@ncsu.edu,0,6,0,1,96.45125,22.66487,2019-02-07,2019-02-06,Forest,"",1,1,1,myanmar,006_8
+12/16/2020 12:03:43,imcgreg@ncsu.edu,0,7,0,1,96.441,22.66976,2019-02-07,2019-02-06,Forest,"originally train7, shifted north",1,0,1,myanmar,007_9
+12/16/2020 12:05:10,imcgreg@ncsu.edu,0,7,0,1,96.44005,22.66847,2019-02-07,2019-02-06,Forest,very small disturbance amidst prior disturbance,2,1,1,myanmar,007_10
+12/16/2020 12:10:00,imcgreg@ncsu.edu,0,8,0,1,95.52217778,26.32177778,2019-02-12,2019-02-11,Road,the 30m includes small portion of previous road,1,1,1,myanmar,008_11
+12/16/2020 12:13:52,imcgreg@ncsu.edu,0,9,0,1,96.12673,24.11504,2019-01-20,2019-01-18,Forest,"originally train9, shifted slightly in same disturbance",1,0,2,myanmar,009_12
+12/16/2020 13:12:01,imcgreg@ncsu.edu,0,10,0,1,96.12999167,24.12018889,2019-01-15,2019-01-13,Forest,originally train10,1,0,2,myanmar,010_13
+12/16/2020 13:19:08,imcgreg@ncsu.edu,0,11,0,1,96.83542,22.50177,2019-01-21,2019-01-20,Forest,"originally train11, shifted slightly",2,1,1,myanmar,011_14
+12/16/2020 13:22:47,imcgreg@ncsu.edu,0,11,0,1,96.83474,22.5022,2019-01-26,2019-01-24,Forest,very close to previous point,1,0,2,myanmar,011_15
+12/16/2020 13:28:30,imcgreg@ncsu.edu,0,12,0,1,97.69611944,21.000125,2019-11-02,2019-11-01,Road,originally train12,1,0,1,myanmar,012_16
+12/16/2020 13:39:23,imcgreg@ncsu.edu,0,13,0,1,98.79688,22.47786,2019-09-23,2019-09-18,Road,originally train13. More road here if need more road points,1,0,5,myanmar,013_17
+12/16/2020 14:23:37,imcgreg@ncsu.edu,0,14,0,1,97.80773,21.98903,2019-02-11,2019-02-09,Forest,"originally train14, shifted west slightly",1,0,2,myanmar,014_18
+12/16/2020 14:29:23,imcgreg@ncsu.edu,0,15,0,1,95.99777,25.55091,2019-02-15,2019-02-14,Forest,"originally train15, shift NE",2,1,1,myanmar,015_19
+12/16/2020 14:35:42,imcgreg@ncsu.edu,0,16,0,1,97.57971944,24.36053333,2019-01-04,2019-01-03,Forest,"originally train16. Imagery shifts a bit from previous day, so if any issues check that.",1,0,1,myanmar,016_20
+12/16/2020 14:36:47,imcgreg@ncsu.edu,0,16,0,1,97.57939,24.36088,2019-01-06,2019-01-05,Forest,"",1,0,1,myanmar,016_21
+12/16/2020 14:44:06,imcgreg@ncsu.edu,0,17,0,1,97.65286,24.15453,2019-01-26,2019-01-24,Forest,"originally train17, shifted N slightly. Barely includes previous disturbance",1,1,2,myanmar,017_22
+12/16/2020 14:46:48,imcgreg@ncsu.edu,0,17,0,1,97.65409,24.15374,2019-01-26,2019-01-24,Forest,small disturbance relatively,1,0,2,myanmar,017_23
+12/16/2020 14:49:49,imcgreg@ncsu.edu,0,18,0,1,99.46454,20.25071,2019-02-02,2019-02-01,Forest,"originally train18, shifted SE",1,1,1,myanmar,018_24
+12/16/2020 14:55:04,imcgreg@ncsu.edu,0,19,0,1,93.24313,21.45809,2019-02-15,2019-02-12,Forest,"originally train19, shifted slightly S",1,0,3,myanmar,019_25
+12/16/2020 14:56:59,imcgreg@ncsu.edu,0,19,0,1,93.24562,21.45686,2019-02-15,2019-02-12,Forest,"",1,0,3,myanmar,019_26
+12/16/2020 15:00:35,imcgreg@ncsu.edu,0,20,0,1,97.60831,24.39572,2019-02-13,2019-02-12,Forest,"originally train20, shifted W and different dates",1,0,1,myanmar,020_27
+12/9/2020 10:26:25,imcgreg@ncsu.edu,1,1,0,1,98.98476,22.62947,2019-02-26,2019-02-25,Forest,"",1,0,1,myanmar,101_28
+12/9/2020 10:30:56,imcgreg@ncsu.edu,1,1,1,,98.984875,22.629875,2019-03-01,2019-02-28,Forest,"",1,0,1,myanmar,101_29
+12/9/2020 10:43:36,nachazal@ncsu.edu,1,2,0,1,98.94882,22.53894,2019-04-27,2019-04-25,Forest,"",1,0,2,myanmar,102_30
+12/9/2020 13:21:46,nachazal@ncsu.edu,1,3,0,1,96.54938,23.03206,2019-03-27,2019-03-19,Forest,"",1,0,8,myanmar,103_31
+12/9/2020 14:01:25,nachazal@ncsu.edu,1,4,0,1,97.28067,23.42716,2019-03-10,2019-03-04,Forest,"",1,1,6,myanmar,104_32
+12/9/2020 14:17:52,nachazal@ncsu.edu,1,5,0,1,95.62219,24.64093,2019-02-12,2019-02-06,Forest,"",1,0,6,myanmar,105_33
+12/10/2020 21:54:40,nachazal@ncsu.edu,1,8,0,1,93.44037,20.36488,2019-03-03,2019-02-22,Forest,"",1,0,9,myanmar,108_34
+12/10/2020 22:09:12,nachazal@ncsu.edu,1,9,0,1,98.8176,21.25536,2019-02-23,2019-02-20,Forest,"",2,1,3,myanmar,109_35
+12/10/2020 22:16:11,nachazal@ncsu.edu,1,10,0,1,97.28424,24.97126,2019-02-12,2019-02-11,Forest,"",1,0,1,myanmar,110_36
+12/11/2020 9:44:17,nachazal@ncsu.edu,1,11,1,,96.810875,22.496625,2019-01-06,2019-01-04,Forest,"",1,0,2,myanmar,111_37
+12/11/2020 9:47:27,nachazal@ncsu.edu,1,11,0,1,96.80965,22.48937,2019-01-04,2019-01-02,Forest,"",1,0,2,myanmar,111_38
+12/11/2020 9:51:48,nachazal@ncsu.edu,1,11,0,1,96.81356,22.51009,2019-01-20,2019-01-17,Forest,"",2,1,3,myanmar,111_39
+12/11/2020 10:19:05,nachazal@ncsu.edu,1,12,0,1,95.42408,26.03011,2019-04-26,2019-04-24,Forest,"",1,1,2,myanmar,112_40
+12/11/2020 10:40:41,nachazal@ncsu.edu,1,14,1,,97.875625,26.594875,2019-05-12,2019-04-23,Forest,Possibly needs to be checked again. There is not a ton of great imagery within this time range.,1,1,19,myanmar,114_41
+12/15/2020 9:06:30,imcgreg@ncsu.edu,1,14,0,1,97.83245,26.57911,2019-03-29,2019-03-26,Forest,alternative to other point at g1p14,1,0,3,myanmar,114_42
+12/11/2020 11:18:41,nachazal@ncsu.edu,1,16,0,1,99.79536,21.56208,2019-02-10,2019-02-04,Forest,"",1,1,6,myanmar,116_43
+12/11/2020 11:26:47,nachazal@ncsu.edu,1,17,0,1,98.67287,22.5106,2019-03-02,2019-02-28,Forest,"The pre-disturbance imagery from Feb 28th is cloudy, but the area is still visible and in conjunction with the Feb 25th imagery, I can say with confidence that Feb 28th was still undisturbed.",1,0,2,myanmar,117_44
+12/11/2020 11:31:43,nachazal@ncsu.edu,1,18,1,,95.350875,25.618625,2019-03-19,2019-03-04,Forest,"",1,0,15,myanmar,118_45
+12/11/2020 11:40:19,nachazal@ncsu.edu,1,19,0,1,97.79828,21.94948,2019-05-19,2019-05-11,Forest,"",2,1,8,myanmar,119_46
+12/11/2020 11:46:03,nachazal@ncsu.edu,1,20,0,1,96.95819,21.49289,2019-02-12,2019-02-11,Forest,"",1,0,1,myanmar,120_47
+12/11/2020 12:27:55,nachazal@ncsu.edu,2,1,1,,97.531125,24.352625,2019-04-11,2019-04-06,Forest,"",2,1,5,myanmar,201_48
+12/11/2020 13:20:40,nachazal@ncsu.edu,2,4,1,,98.935875,22.151875,2019-05-28,2019-05-19,Forest,"",2,1,9,myanmar,204_50
+12/11/2020 13:41:42,nachazal@ncsu.edu,2,6,0,1,97.62449,22.72557,2019-10-21,2019-09-29,Forest,"",1,0,22,myanmar,206_52
+12/13/2020 14:32:45,nachazal@ncsu.edu,2,7,0,1,95.88907,26.01235,2019-04-24,2019-04-20,Forest,"",1,0,4,myanmar,207_53
+12/13/2020 14:44:37,nachazal@ncsu.edu,2,8,1,,97.632875,24.404125,2019-04-16,2019-04-11,Forest,"",2,1,5,myanmar,208_54
+12/13/2020 14:53:40,nachazal@ncsu.edu,2,9,0,1,99.82509,21.62405,2019-03-20,2019-03-13,Road,"imagery before the alert date is cloudy; not sure if this is forest or road expansion, but because it looks like the end of a road, I'm leaning towards road expansion",2,1,7,myanmar,209_55
+12/13/2020 16:00:52,nachazal@ncsu.edu,2,10,1,,98.288875,22.319625,2019-01-24,2019-01-21,Forest,"",1,1,3,myanmar,210_56
+12/13/2020 16:30:51,nachazal@ncsu.edu,2,11,0,1,99.05511,22.87253,2019-01-31,2019-01-28,Forest,"",2,1,3,myanmar,211_57
+12/13/2020 16:38:23,nachazal@ncsu.edu,2,12,0,1,93.30395,22.62533,2019-10-24,2019-10-23,Forest,"",1,0,1,myanmar,212_58
+12/13/2020 16:46:32,nachazal@ncsu.edu,2,13,0,1,99.79887,21.70886,2019-01-21,2019-01-20,Forest,"",1,1,1,myanmar,213_59
+12/13/2020 17:01:43,nachazal@ncsu.edu,2,15,0,1,98.81053,21.0062,2019-04-16,2019-04-10,Forest,Imagery for this date range is incredibly cloudy,2,1,6,myanmar,215_60
+12/13/2020 17:07:48,nachazal@ncsu.edu,2,16,1,,95.195875,24.682125,2019-02-12,2019-02-07,Forest,"",2,1,5,myanmar,216_61
+12/13/2020 17:15:16,nachazal@ncsu.edu,2,17,0,1,98.04438,22.80985,2019-05-15,2019-05-11,Forest,"",1,0,4,myanmar,217_62
+12/13/2020 17:20:28,nachazal@ncsu.edu,2,18,0,1,96.64369,22.69705,2019-02-12,2019-02-10,Forest,"",1,0,2,myanmar,218_63
+12/13/2020 17:26:24,nachazal@ncsu.edu,2,19,0,1,93.47815,23.40238,2019-04-24,2019-04-20,Forest,"",2,1,4,myanmar,219_64
+12/13/2020 17:33:45,nachazal@ncsu.edu,2,20,0,1,97.2081,23.1222,2019-02-13,2019-02-10,Forest,"",2,1,3,myanmar,220_65
+12/13/2020 20:44:02,nachazal@ncsu.edu,3,1,0,1,93.43202,22.77055,2019-04-20,2019-04-14,Forest,"",1,1,6,myanmar,301_66
+12/13/2020 20:52:54,nachazal@ncsu.edu,3,2,0,1,97.4821,25.46123,2019-03-28,2019-03-24,Forest,"",2,1,4,myanmar,302_67
+12/13/2020 21:04:47,nachazal@ncsu.edu,3,3,0,1,98.27626,20.92812,2019-04-10,2019-04-09,Forest,"",2,1,1,myanmar,303_68
+12/13/2020 21:15:38,nachazal@ncsu.edu,3,4,0,1,97.94411,20.43446,2019-05-20,2019-05-19,Forest,"",1,0,1,myanmar,304_69
+12/13/2020 21:24:13,nachazal@ncsu.edu,3,5,1,,97.663625,26.885375,2019-04-23,2019-04-19,Forest,"",1,1,4,myanmar,305_70
+12/13/2020 21:38:49,nachazal@ncsu.edu,3,6,0,1,95.3091,25.67812,2019-03-21,2019-03-15,Forest,"",1,0,6,myanmar,306_71
+12/13/2020 21:56:45,nachazal@ncsu.edu,3,7,1,,98.076375,22.764875,2019-05-09,2019-05-07,Forest,"",2,1,2,myanmar,307_72
+12/14/2020 16:34:34,nachazal@ncsu.edu,3,8,0,1,97.75868,23.2387,2019-04-11,2019-04-09,Forest,"",2,1,2,myanmar,308_73
+12/14/2020 16:41:22,nachazal@ncsu.edu,3,9,0,1,97.87453,26.59729,2019-03-24,2019-03-23,Forest,"",1,0,1,myanmar,309_74
+12/14/2020 16:47:16,nachazal@ncsu.edu,3,10,0,1,98.21883,24.02721,2019-05-15,2019-05-11,Forest,"",2,1,4,myanmar,310_75
+12/14/2020 17:06:27,nachazal@ncsu.edu,3,12,0,1,99.00732,22.06971,2019-04-30,2019-04-19,Forest,This was the closest imagery date that wasn't cloudy or incomplete,2,1,11,myanmar,312_76
+12/15/2020 9:13:17,imcgreg@ncsu.edu,3,12,0,1,99.0063,22.0674,2019-04-12,2019-04-10,Forest,alternative to g3p12,1,1,2,myanmar,312_77
+12/14/2020 19:55:31,nachazal@ncsu.edu,3,13,0,1,98.73975,22.142,2019-01-29,2019-01-27,Forest,"",1,1,2,myanmar,313_78
+12/14/2020 20:01:12,nachazal@ncsu.edu,3,14,0,1,93.34244,22.63119,2019-02-03,2019-02-01,Forest,"",1,1,2,myanmar,314_79
+12/14/2020 20:21:17,nachazal@ncsu.edu,3,16,0,1,97.55864,23.55849,2019-12-09,2019-12-06,Forest,"",1,0,3,myanmar,316_80
+12/14/2020 20:37:33,nachazal@ncsu.edu,3,17,0,1,96.57893,22.80884,2019-05-21,2019-05-17,Forest,"",1,0,4,myanmar,317_81
+12/14/2020 20:44:33,nachazal@ncsu.edu,3,18,0,1,97.9582,25.71621,2019-05-20,2019-05-17,Forest,"",1,1,3,myanmar,318_82
+12/14/2020 20:56:40,nachazal@ncsu.edu,3,19,0,1,93.55649,23.95272,2019-01-05,2019-01-02,Forest,"",1,0,3,myanmar,319_83
+12/14/2020 21:22:29,nachazal@ncsu.edu,3,20,0,1,95.85105,25.84387,2019-11-18,2019-11-16,Forest,"",1,1,2,myanmar,320_84
+12/14/2020 21:42:19,nachazal@ncsu.edu,4,1,0,1,99.60269,20.79693,2019-03-10,2019-03-07,Forest,"",2,1,3,myanmar,401_85
+12/14/2020 21:49:08,nachazal@ncsu.edu,4,2,0,1,98.13065,20.84104,2019-02-05,2019-02-04,Forest,"",1,1,1,myanmar,402_86
+12/14/2020 21:56:54,nachazal@ncsu.edu,4,3,0,1,97.25666,24.96072,2019-02-24,2019-02-17,Forest,There was no imagery closer to the Feb 20th date,1,0,7,myanmar,403_87
+12/14/2020 22:12:54,nachazal@ncsu.edu,4,4,0,1,96.09665,26.36631,2019-04-12,2019-04-04,Forest,"",2,1,8,myanmar,404_88
+12/15/2020 9:32:52,imcgreg@ncsu.edu,4,4,0,1,96.11118,26.37082,2019-03-29,2019-03-28,Forest,alternative to g4p4,1,1,1,myanmar,404_89
+12/14/2020 23:14:05,nachazal@ncsu.edu,4,7,0,1,96.48197,25.6319,2019-03-24,2019-03-19,Forest,"",2,1,5,myanmar,407_90
+12/14/2020 23:37:13,nachazal@ncsu.edu,4,9,0,1,99.98844,21.531,2019-12-01,2019-11-29,Road,"",2,1,2,myanmar,409_91
+12/15/2020 12:44:26,nachazal@ncsu.edu,4,11,0,1,97.24831,23.44996,2019-12-06,2019-12-03,Forest,"",1,0,3,myanmar,411_92
+12/15/2020 12:53:33,nachazal@ncsu.edu,4,12,0,1,99.6499,21.80678,2019-03-20,2019-03-18,Forest,"",2,1,2,myanmar,412_93
+12/15/2020 20:30:37,nachazal@ncsu.edu,4,14,0,1,97.56662,24.2447,2019-01-20,2019-01-17,Forest,"",1,1,3,myanmar,414_94
+12/15/2020 21:07:35,nachazal@ncsu.edu,4,17,0,1,93.29486,22.7322,2019-10-24,2019-10-23,Forest,"",1,0,1,myanmar,417_95
+12/15/2020 21:09:47,nachazal@ncsu.edu,4,17,0,1,93.29387,22.73116,2019-10-24,2019-10-23,Forest,"",1,1,1,myanmar,417_96
+12/15/2020 21:10:59,nachazal@ncsu.edu,4,17,0,1,93.29259,22.72925,2019-10-24,2019-10-23,Forest,"",1,0,1,myanmar,417_97
+12/15/2020 21:12:58,nachazal@ncsu.edu,4,17,0,1,93.29179,22.73101,2019-10-24,2019-10-23,Forest,"",1,0,1,myanmar,417_98
+12/15/2020 21:14:43,nachazal@ncsu.edu,4,17,0,1,93.29211,22.7332,2019-10-24,2019-10-23,Forest,"",1,0,1,myanmar,417_99
+12/15/2020 21:16:51,nachazal@ncsu.edu,4,17,0,1,93.29536,22.73443,2019-10-24,2019-10-23,Forest,"",1,0,1,myanmar,417_100
+12/15/2020 21:18:07,nachazal@ncsu.edu,4,17,0,1,93.29661,22.7341,2019-10-24,2019-10-23,Forest,"",1,1,1,myanmar,417_101
+12/16/2020 15:00:58,nachazal@ncsu.edu,5,1,0,1,98.12568,22.17248,2019-03-01,2019-02-28,Forest,"",2,1,1,myanmar,501_102
+12/11/2020 11:24:52,imcgreg@ncsu.edu,169,1,0,1,96.64379,24.07821,2019-02-23,2019-02-19,Forest,Pretty hard to see but pretty sure disturbance is here.,1,0,4,myanmar,16901_103
+12/11/2020 11:30:29,imcgreg@ncsu.edu,169,2,0,1,98.88628,22.32981,2019-02-21,2019-02-20,Forest,almost fully surrounded by other disturbed area,1,1,1,myanmar,16902_104
+12/11/2020 11:33:13,imcgreg@ncsu.edu,169,2,0,1,98.88811,22.33074,2019-02-21,2019-02-20,Forest,"",1,1,1,myanmar,16902_105
+12/11/2020 11:43:02,imcgreg@ncsu.edu,169,3,0,1,98.1729,21.9856,2019-03-04,2019-02-28,Forest,"",1,0,4,myanmar,16903_106
+12/10/2020 16:15:59,imcgreg@ncsu.edu,170,2,0,1,93.19817,22.85298,2019-10-31,2019-10-29,Forest,"2 days later it's light green, but 3 days later it's brown",1,0,2,myanmar,17002_107
+12/10/2020 16:18:14,imcgreg@ncsu.edu,170,2,0,1,93.19736,22.85753,2019-11-01,2019-10-31,Forest,"",1,0,1,myanmar,17002_108
+12/10/2020 16:28:30,imcgreg@ncsu.edu,170,3,0,1,97.1748,24.06032,2019-01-17,2019-01-15,Forest,Hard to see actual disturbance instance. If this has odd an odd timeseries this would be why,1,0,2,myanmar,17003_109
+12/11/2020 9:25:30,imcgreg@ncsu.edu,170,4,0,1,98.28177,23.32976,2019-02-08,2019-02-07,Forest,"",1,0,1,myanmar,17004_110
+12/11/2020 9:48:58,imcgreg@ncsu.edu,170,5,0,1,98.82346,22.47507,2019-03-04,2019-03-01,Forest,This is part of a relatively large disturbance,1,0,3,myanmar,17005_111
+12/11/2020 9:50:30,imcgreg@ncsu.edu,170,5,0,1,98.82268,22.47552,2019-03-04,2019-03-01,Forest,Part of a relatively large disturbance,1,0,3,myanmar,17005_112
+12/11/2020 10:05:46,imcgreg@ncsu.edu,170,6,0,1,95.70409,26.4464,2019-02-08,2019-02-07,Forest,The buffer barely includes some previous disturbance,1,1,1,myanmar,17006_113
+12/11/2020 10:08:46,imcgreg@ncsu.edu,170,6,0,1,95.71145,26.4485,2019-02-08,2019-02-07,Forest,Very small dist part of slightly larger one,2,1,1,myanmar,17006_114
+12/11/2020 10:11:14,imcgreg@ncsu.edu,170,6,0,1,95.70636,26.44878,2019-02-08,2019-02-07,Forest,"",1,0,1,myanmar,17006_115
+12/11/2020 10:13:05,imcgreg@ncsu.edu,170,6,0,1,95.70657,26.45009,2019-02-08,2019-02-07,Forest,part of a moderately large disturbance (for a one-day difference),1,0,1,myanmar,17006_116
