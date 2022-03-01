@@ -1,0 +1,231 @@
+Timestamp,nGroup,nPoly,nPoint,coordX,coordY,dateDist,datePre,distType,distPercS2,distPercL8,notes,source,pointid,dayDiff
+1/26/2022 15:48:40,0,0,1,97.65686,24.15909,2019-01-05,2019-01-04,Forest,1,0.5,replacement for g0p1_1. beginning of larger disturbance,ian,g0p0_1,1
+1/27/2022 10:53:39,0,0,10,97.5774,24.36111,2019-01-05,2019-01-02,Forest,1,0.9,"replacement for g0p16_2, same area as g0p16_1",ian,g0p0_10,3
+1/27/2022 10:59:38,0,0,11,97.6529,24.15455,2019-01-27,2019-01-24,Road,1,0.8,replacement of g0p17_1 to be in center of disturbance. Can't rightly tell if this is road or not. Same area as g0p0_12,ian,g0p0_11,3
+1/27/2022 11:06:07,0,0,12,97.65696,24.15573,2019-01-26,2019-01-24,Forest,1,0.8,"replacement for g0p17_2, same area as g0p0_11",ian,g0p0_12,2
+1/26/2022 15:53:04,0,0,2,97.65541,24.15852,2019-01-20,2019-01-16,Forest,1,0.9,replacement for g0p1_2,ian,g0p0_2,4
+1/27/2022 9:10:13,0,0,3,97.37947,23.53998,2019-02-21,2019-02-19,Forest,1,0.8,very close to g0p0_4,ian,g0p0_3,2
+1/27/2022 9:12:27,0,0,4,97.37856,23.53863,2019-02-21,2019-02-15,Forest,1,1,"replacement for g0p4_1. Same disturbance, but more representative dates. very close to g0p0_3",ian,g0p0_4,6
+1/27/2022 9:17:08,0,0,5,98.19097,21.95577,2019-11-12,2019-11-03,Road,1,0.7,"replacement for g0p5_1 (put in middle of road instead of edge). The signal in the ts is there, but super close to end of timeframe",ian,g0p0_5,9
+1/27/2022 9:26:24,0,0,6,98.21266,21.96692,2019-08-02,2019-06-24,Road,1,1,absolutely no good imagery for all of July,ian,g0p0_6,39
+1/27/2022 9:34:37,0,0,7,96.45188,22.65588,2019-02-07,2019-02-06,Forest,1,0.8,"same area as g0p6_1, g0p0_7, g0p6_2, g0p7_1, g0p0_8",ian,g0p0_7,1
+1/27/2022 10:24:20,0,0,8,96.44331,22.66712,2019-02-07,2019-02-06,Forest,1,0.9,"replacement for g0p7_2, same area as g0p6_1, g0p0_7, g0p6_2, g0p7_1, g0p0_8",ian,g0p0_8,1
+1/27/2022 10:34:39,0,0,9,98.79685,22.4779,2019-09-23,2019-09-18,Road,1,0.5,replacement for g0p13_1,ian,g0p0_9,5
+1/27/2022 10:42:09,0,14,1,97.80773,21.98903,2019-02-11,2019-02-09,Forest,1,1,original,ian,g0p14_1,2
+1/27/2022 10:47:01,0,15,1,95.99777,25.55091,2019-02-15,2019-02-14,Forest,1,0.4,"original, not great signal in ts, but clear dist, overlap with previous dist",ian,g0p15_1,1
+1/27/2022 10:51:27,0,16,1,97.57971944,24.36053333,2019-01-05,2019-01-04,Forest,1,1,"original, but different dates to have stable imagery. Same area as g0p0_10",ian,g0p16_1,1
+1/27/2022 11:08:58,0,19,1,93.24313,21.45809,2019-02-15,2019-02-12,Forest,1,1,"original, same area as g0p19_2",ian,g0p19_1,3
+1/27/2022 11:11:13,0,19,2,93.24562,21.45686,2019-02-15,2019-02-12,Forest,1,1,"original, same area as g0p19_1",ian,g0p19_2,3
+1/27/2022 11:15:00,0,20,1,97.60831,24.39572,2019-02-13,2019-02-12,Forest,1,1,original,ian,g0p20_1,1
+1/27/2022 9:02:30,0,2,1,97.35255278,23.47673056,2019-03-25,2019-03-23,Forest,1,1,original,ian,g0p2_1,2
+1/27/2022 15:07:25,0,2,5,99.82269,21.6163,2019-02-21,2019-02-20,Forest,1,0.4,same area as g2p0_4,ian,g0p2_5,1
+1/27/2022 9:04:50,0,3,1,97.902125,23.17163056,2019-01-26,2019-01-21,Forest,1,1,original,ian,g0p3_1,5
+1/27/2022 9:30:19,0,6,1,96.44944,22.66764,2019-02-06,2019-02-02,Forest,1,0.9,"original, same area as g0p6_1, g0p0_7, g0p6_2, g0p7_1, g0p0_8",ian,g0p6_1,4
+1/27/2022 9:37:01,0,6,2,96.45125,22.66487,2019-02-07,2019-02-06,Forest,1,0.9,"original, same area as g0p6_1, g0p0_7, g0p6_2, g0p7_1, g0p0_8",ian,g0p6_2,1
+1/27/2022 9:40:56,0,7,1,96.441,22.66976,2019-02-07,2019-02-06,Forest,1,1,"original, same area as g0p6_1, g0p0_7, g0p6_2, g0p7_1, g0p0_8",ian,g0p7_1,1
+1/27/2022 10:29:43,0,8,1,95.52217778,26.32177778,2019-02-12,2019-02-11,Road,1,0.8,not the strongest signal in ts but somewhat there. this is a road pullout / small expansion,ian,g0p8_1,1
+1/27/2022 11:22:54,1,0,1,98.98691,22.63007,2019-02-26,2019-02-25,Forest,1,1,"same area as g1p1_1, g1p0_2",ian,g1p0_1,1
+1/27/2022 13:25:56,1,0,10,99.7954,21.56202,2019-02-10,2019-02-04,Forest,1,0.7,"replacement for g1p16_1, near g1p0_9",ian,g1p0_10,6
+1/27/2022 13:37:42,1,0,11,98.67283,22.51048,2019-03-01,2019-02-25,Forest,1,1,replacement for g1p17_1 (moved slightly),ian,g1p0_11,4
+1/27/2022 13:42:59,1,0,12,95.34717,25.59961,2019-03-10,2019-03-04,Forest,1,1,same area as g1p18_1,ian,g1p0_12,6
+1/27/2022 13:49:58,1,0,13,97.79726,21.94718,2019-04-18,2019-04-09,Forest,1,0.9,replacement for g1p19_1,ian,g1p0_13,9
+1/27/2022 11:25:12,1,0,2,98.98494,22.6298,2019-03-01,2019-02-28,Forest,1,0.9,"replacement for g1p1_2, same area as g1p1_1, g1p0_1",ian,g1p0_2,1
+1/27/2022 11:35:41,1,0,3,98.95016,22.53411,2019-04-22,2019-04-17,Forest,1,0.4,replacement for g1p2_1,ian,g1p0_3,5
+1/27/2022 11:49:20,1,0,4,97.28466,23.43148,2019-03-10,2019-03-04,Forest,1,1,"same area and scenario as g1p4_1, but larger disturbance",ian,g1p0_4,6
+1/27/2022 12:02:12,1,0,5,98.80529,21.25472,2019-02-03,2019-02-01,Forest,1,1,"replacement of g1p9_1, same area as g1p0_6",ian,g1p0_5,2
+1/27/2022 12:03:40,1,0,6,98.80434,21.25618,2019-02-03,2019-02-01,Forest,1,0.9,same area as g1p0_5,ian,g1p0_6,2
+1/27/2022 12:08:16,1,0,7,97.28389,24.971,2019-02-12,2019-02-11,Forest,1,0.9,"replacement for g1p10_1. Nothing wrong with the original point, but in terms of getting % disturbed, can't tell if a dark spot is forest or not, so I moved it some meters SW",ian,g1p0_7,1
+1/27/2022 13:12:58,1,0,8,95.42523,26.02754,2019-02-01,2019-01-31,Forest,1,0.8,replacement for g1p12_1 (same disturbance area),ian,g1p0_8,1
+1/27/2022 13:22:32,1,0,9,99.76596,21.54345,2019-02-11,2019-02-10,Forest,1,1,near g1p0_10,ian,g1p0_9,1
+1/27/2022 13:40:23,1,18,1,95.350875,25.618625,2019-03-12,2019-03-04,Forest,1,1,original,ian,g1p18_1,8
+1/27/2022 11:20:04,1,1,1,98.98476,22.62947,2019-02-26,2019-02-25,Forest,1,1,"original, same area as g1p0_2, g1p0_1",ian,g1p1_1,1
+1/27/2022 11:40:33,1,3,1,96.54938,23.03206,2019-03-24,2019-03-19,Forest,1,1,"original, changed the date of dist due to good imagery",ian,g1p3_1,5
+1/27/2022 11:47:48,1,4,1,97.28067,23.42716,2019-03-10,2019-03-04,Forest,1,0.9,"original. This disturbance is part of a much larger one, but this is like a remnant small part they left from the beginning. Same area as g1p0_4",ian,g1p4_1,6
+1/27/2022 11:52:58,1,5,1,95.62219,24.64093,2019-02-12,2019-02-06,Forest,1,1,original,ian,g1p5_1,6
+1/27/2022 13:55:19,2,0,1,97.53099,24.35257,2019-04-09,2019-04-06,Forest,1,0.5,replacement for g2p1_1,ian,g2p0_1,3
+1/28/2022 10:36:35,2,0,10,95.21801,24.68417,2019-03-10,2019-03-04,Road,0.9,0.3,replacement for g2p16_1,ian,g2p0_10,6
+1/28/2022 12:51:53,2,0,11,98.08171,22.80297,2019-03-24,2019-03-23,Forest,1,0.9,replacement for g2p17_1,ian,g2p0_11,1
+1/28/2022 13:25:36,2,0,12,93.4773,23.41213,2019-03-29,2019-03-26,Forest,1,1,"replacement for g2p19_1. Pretty clear dist, but the underlying ground is dark. Not sure if that will show up in ts",ian,g2p0_12,3
+1/28/2022 13:32:20,2,0,13,97.20803,23.12201,2019-02-13,2019-02-10,Forest,1,0.8,replacement for g2p20_1 (moved slightly down),natalie,g2p0_13,3
+1/27/2022 14:02:27,2,0,2,98.96372,22.18176,2019-02-21,2019-02-20,Forest,1,0.8,replacement for g2p4_1,ian,g2p0_2,1
+1/27/2022 14:49:54,2,0,3,97.60256,24.40724,2019-04-11,2019-04-09,Forest,1,0.9,replacement for g2p8_1,ian,g2p0_3,2
+1/27/2022 15:05:05,2,0,4,99.82418,21.62264,2019-02-19,2019-02-14,Road,1,0.5,"replacement for g2p9_1. Note that the 19 Feb imagery is off from the others, so I validated using 20 Feb. Same area as g2p0_5",ian,g2p0_4,5
+1/27/2022 15:12:45,2,0,6,98.28879,22.31981,2019-01-23,2019-01-21,Forest,1,0.8,replacement for g2p10_1 (moved slightly up),natalie,g2p0_6,2
+1/27/2022 15:20:41,2,0,7,99.05353,22.87405,2019-01-26,2019-01-25,Forest,1,1,replacement for g2p11_1,ian,g2p0_7,1
+1/28/2022 10:22:39,2,0,8,99.79941,21.70853,2019-01-16,2019-01-15,Forest,1,1,replacement for g1p13_1,natalie,g2p0_8,1
+1/28/2022 10:27:09,2,0,9,98.81054,21.00622,2019-04-16,2019-04-10,Forest,1,0.8,replacement for g2p15_1,natalie,g2p0_9,6
+1/28/2022 8:54:07,2,1,12,93.30395,22.62533,2019-10-24,2019-10-23,Forest,1,1,original,natalie,g2p1_12,1
+1/28/2022 12:55:01,2,1,18,96.64369,22.69705,2019-02-12,2019-02-10,Forest,1,1,original,natalie,g2p1_18,2
+1/27/2022 14:38:00,2,7,1,95.88907,26.01235,2019-04-24,2019-04-20,Forest,1,1,original,natalie,g2p7_1,4
+1/28/2022 13:36:57,3,0,1,93.43198,22.7706,2019-04-17,2019-04-14,Road,1,0.7,"replacement for g3p1_1. Note that in the ts, only S2 shows strong signal, which is interesting.",natalie,g3p0_1,3
+1/28/2022 15:50:44,3,0,10,93.3424,22.63118,2019-02-03,2019-02-01,Forest,1,0.9,replacement for g3p14_1 (directly next to original),natalie,g3p0_10,2
+1/28/2022 15:59:57,3,0,11,97.56386,23.55811,2019-01-25,2019-01-22,Forest,1,0.4,"replacement for g3p16_1 (same area, but earlier in year so is more usable)",ian,g3p0_11,3
+1/28/2022 16:03:27,3,0,12,96.56944,22.75244,2019-01-23,2019-01-22,Forest,1,1,replacement for g3p17_1,ian,g3p0_12,1
+1/28/2022 16:15:04,3,0,13,97.9565,25.7148,2019-04-19,2019-04-15,Forest,1,1,replacement for g3p18_1,ian,g3p0_13,4
+1/28/2022 16:21:08,3,0,14,95.84417,25.8437,2019-04-08,2019-04-04,Forest,1,0.7,replacement for g3p20_1 (to have earlier in year),ian,g3p0_14,4
+1/28/2022 13:46:37,3,0,2,97.48208,25.45996,2019-03-21,2019-03-19,Forest,1,0.9,replacement for g3p2_1,ian,g3p0_2,2
+1/28/2022 13:51:25,3,0,3,98.27786,20.92821,2019-03-26,2019-03-21,Forest,1,1,replacement for g3p3_1,ian,g3p0_3,5
+1/28/2022 14:02:41,3,0,4,98.03753,22.73582,2019-02-16,2019-02-14,Forest,1,0.8,replacement for g3p7_1,ian,g3p0_4,2
+1/28/2022 14:09:52,3,0,5,97.76266,23.23699,2019-03-29,2019-03-23,Forest,1,0.9,replacement for g3p8_1,ian,g3p0_5,6
+1/28/2022 15:13:22,3,0,6,99.01056,22.05066,2019-04-04,2019-03-30,Forest,1,1,replacement for g3p12_1,ian,g3p0_6,5
+1/28/2022 15:35:15,3,0,7,99.02042,22.04896,2019-03-15,2019-03-14,Road,1,0.4,replacement for g3p12_2,ian,g3p0_7,1
+1/28/2022 15:44:27,3,0,8,98.74265,22.13957,2019-01-29,2019-01-27,Forest,1,1,"",ian,g3p0_8,2
+1/28/2022 15:47:42,3,0,9,98.74029,22.14001,2019-01-25,2019-01-24,Forest,1,1,replacement for g3p13_1,ian,g3p0_9,1
+1/28/2022 13:52:59,3,6,1,95.3091,25.67812,2019-03-21,2019-03-15,Forest,1,1,original,natalie,g3p6_1,6
+1/30/2022 10:56:09,4,0,1,96.09509,26.36453,2019-03-09,2019-03-04,Forest,1,1,replacement for g4p4_1,ian,g4p0_1,5
+1/31/2022 8:34:23,4,0,2,100.00314,21.51469,2019-03-02,2019-03-01,Forest,1,1,replacement for g4p9_1,ian,g4p0_2,1
+1/31/2022 8:43:52,4,0,3,99.6555,21.80255,2019-02-07,2019-02-06,Forest,1,1,replacement for g4p12_1,ian,g4p0_3,1
+1/31/2022 8:48:18,4,0,4,97.56651,24.24451,2019-01-20,2019-01-17,Forest,1,0.8,replacement for g4p14_1 (shifted over a little),natalie,g4p0_4,3
+1/31/2022 8:38:35,4,11,1,97.24831,23.44996,2019-12-06,2019-12-03,Forest,1,1,original,natalie,g4p11_1,3
+1/31/2022 8:51:12,4,17,1,93.29486,22.7322,2019-10-24,2019-10-23,Forest,1,1,"original, same area as g4p17_1-7",natalie,g4p17_1,1
+1/31/2022 8:53:23,4,17,2,93.29387,22.73116,2019-10-24,2019-10-23,Forest,1,1,"original, same area as g4p17_1-7",natalie,g4p17_2,1
+1/31/2022 8:56:27,4,17,3,93.29259,22.72925,2019-10-24,2019-10-23,Forest,1,0.9,"original, same area as g4p17_1-7",natalie,g4p17_3,1
+1/31/2022 9:02:02,4,17,4,93.29179,22.73101,2019-10-24,2019-10-23,Forest,1,1,"original, same area as g4p17_1-7",natalie,g4p17_4,1
+1/31/2022 9:06:15,4,17,5,93.29211,22.7332,2019-10-24,2019-10-23,Forest,1,1,"original. Interesting how L8 signal not great, imagery looks like it was cut and then left on ground, I called the % 1 but it could plausibly be less (0.8-1), but can't really tell. Same area as g4p17_1-7",natalie,g4p17_5,1
+1/31/2022 9:08:13,4,17,6,93.29536,22.73443,2019-10-24,2019-10-23,Forest,1,1,"original, same area as g4p17_1-7",natalie,g4p17_6,1
+1/31/2022 9:10:16,4,17,7,93.29661,22.7341,2019-10-24,2019-10-23,Forest,1,1,"original, same area as g4p17_1-7",natalie,g4p17_7,1
+1/30/2022 10:16:17,4,3,1,97.25666,24.96072,2019-02-24,2019-02-17,Forest,1,1,original,natalie,g4p3_1,7
+1/31/2022 9:21:07,5,0,1,97.37007,21.72746,2019-01-25,2019-01-24,Forest,1,0.8,replacement for g5p2_1 (shifted over and different dates),natalie,g5p0_1,1
+1/31/2022 9:31:40,5,0,2,98.72896,21.89191,2019-03-23,2019-03-22,Forest,1,1,replacement for g5p4_1,ian,g5p0_2,1
+1/31/2022 9:43:27,5,0,3,98.90682,22.57972,2019-04-09,2019-04-05,Forest,1,0.9,same area as g5p6_1,ian,g5p0_3,4
+1/31/2022 9:48:00,5,0,4,97.24117,25.24987,2019-01-12,2019-01-11,Forest,1,0.8,replacement for g5p7_1 (shifted slightly),natalie,g5p0_4,1
+1/31/2022 10:15:31,5,0,5,97.7324,23.7037,2019-02-24,2019-02-16,Forest,1,0.4,replacement for g5p8_1. Small disturbance add-on to slightly larger dist,ian,g5p0_5,8
+1/31/2022 10:18:52,5,0,6,98.93445,22.39076,2019-02-14,2019-02-12,Forest,1,1,replacement for g5p9_1 (moved slightly N),natalie,g5p0_6,2
+1/31/2022 10:43:35,5,0,7,95.84307,25.90209,2019-03-17,2019-03-15,Forest,1,0.9,replacement for g5p10_1,ian,g5p0_7,2
+1/31/2022 13:30:34,5,0,8,98.95777,22.0757,2019-03-17,2019-03-15,Forest,1,0.9,replacement for g5p15_1 (shifted slightly to capture whole dist),natalie,g5p0_8,2
+1/31/2022 13:37:10,5,0,9,97.3218,23.66894,2019-03-14,2019-03-13,Forest,1,0.6,replacement for g5p16_1 (shifted W),ian,g5p0_9,1
+1/31/2022 13:39:10,5,18,1,97.44013,23.74172,2019-02-23,2019-02-19,Forest,1,1,original,natalie,g5p18_1,4
+1/31/2022 9:14:08,5,1,1,98.12568,22.17248,2019-03-01,2019-02-28,Forest,1,0.7,original,natalie,g5p1_1,1
+1/31/2022 13:41:32,5,20,1,98.99187,22.50872,2019-03-04,2019-03-02,Forest,1,1,original,natalie,g5p20_1,2
+1/31/2022 9:24:54,5,3,1,93.27066,21.54636,2019-05-02,2019-04-30,Road,1,0.7,original,natalie,g5p3_1,2
+1/31/2022 9:37:50,5,6,1,98.90416,22.5834,2019-03-20,2019-03-15,Forest,1,0.7,"original. this is in the middle of a larger disturbance, and the signal comes early for all 3 sensors. Same area as g5p0_3",natalie,g5p6_1,5
+1/31/2022 13:49:56,6,0,1,95.40341,24.92051,2019-04-18,2019-04-16,Road,1,0.8,replacement for g6p10_1 (shifted slightly),natalie,g6p0_1,2
+1/31/2022 14:00:52,6,0,2,99.16478,22.7178,2019-02-04,2019-02-03,Forest,1,1,replacement for g6p14_1,ian,g6p0_2,1
+1/31/2022 14:11:37,6,0,3,97.44487,23.58211,2019-05-08,2019-05-07,Forest,1,0.4,replacement for g6p17_1 (barely shifted). Note that for some reason the dist signal for this for L8 and S2 is extremely weak.,natalie,g6p0_3,1
+1/31/2022 14:27:00,6,0,4,97.84584,26.19012,2019-04-25,2019-04-23,Forest,1,1,"",ian,g6p0_4,2
+1/31/2022 14:30:12,6,0,5,97.84615,26.18406,2019-11-25,2019-11-24,Forest,1,0.5,replacement for g6p20_1 (shifted S a bit),natalie,g6p0_5,1
+1/31/2022 14:16:36,6,19,1,95.28742,24.33388,2019-03-15,2019-03-14,Forest,1,0.7,original,natalie,g6p19_1,1
+1/31/2022 13:45:58,6,3,1,93.3023,22.993,2019-01-19,2019-01-17,Forest,1,0.9,original,natalie,g6p3_1,2
+1/31/2022 14:41:33,7,0,1,97.66348,25.39492,2019-03-29,2019-03-24,Forest,1,1,replacement for g7p1_1,ian,g7p0_1,5
+2/1/2022 9:44:22,7,0,10,95.16858,25.92228,2019-02-02,2019-02-01,Forest,1,1,"",ian,g7p0_10,1
+2/1/2022 9:48:54,7,0,11,95.60613,24.53361,2019-05-29,2019-05-28,Forest,1,0.9,"replacement for g7p20_1, shifted slightly",natalie,g7p0_11,1
+2/1/2022 8:28:19,7,0,2,97.35854,23.43084,2019-02-11,2019-02-10,Forest,1,0.8,replacement for g7p2_1 (shifted S slightly),natalie,g7p0_2,1
+2/1/2022 8:34:11,7,0,3,98.9147,21.42507,2019-03-18,2019-03-15,Forest,1,0.9,"replacement for g7p3_1, shifted slightly W",natalie,g7p0_3,3
+2/1/2022 8:49:59,7,0,4,95.21234,24.65362,2019-05-28,2019-05-22,Forest,1,1,replacement for g7p8_1,ian,g7p0_4,6
+2/1/2022 9:05:47,7,0,5,93.27359,21.5521,2019-05-08,2019-05-07,Road,1,1,"replacement for g7p11_1. Note that I'm not 100% certain this is forest that was converted to road, but checking back to 2017 doesn't show any other disturbance. The signal should be fine for NDVI / brightness.",ian,g7p0_5,1
+2/1/2022 9:17:04,7,0,6,95.19427,25.89214,2019-02-05,2019-02-03,Forest,1,0.8,replacement for g7p12_1 (shifted slightly N to be more in disturbance),natalie,g7p0_6,2
+2/1/2022 9:20:28,7,0,7,95.4327,26.09555,2019-02-01,2019-01-31,Forest,1,1,"same area as g7p0_7, g0p7_8, g7p13_1",ian,g7p0_7,1
+2/1/2022 9:22:46,7,0,8,95.43843,26.09851,2019-02-05,2019-02-03,Forest,1,1,"same area as g7p0_7, g0p7_8, g7p13_1",ian,g7p0_8,2
+2/1/2022 9:30:37,7,0,9,93.49602,23.41141,2019-11-26,2019-11-25,Forest,1,0.8,"replacement for g7p14_1, shifted E and new dates",ian,g7p0_9,1
+2/1/2022 8:52:32,7,10,1,95.48655,26.38192,2019-02-11,2019-02-07,Forest,1,1,original,natalie,g7p10_1,4
+2/1/2022 9:23:29,7,13,1,95.4316,26.097,2019-02-11,2019-02-07,Forest,1,1,"original, same area as g7p0_7, g0p7_8, g7p13_1",natalie,g7p13_1,4
+2/1/2022 9:34:51,7,16,1,97.14131,25.16181,2019-01-25,2019-01-23,Forest,1,1,"original, it seems the imagery clearly shows this is not primary forest, yet the ts makes it seem like it is. This means if it truly wasn't primary forest, it was disturbed prior to 2015 and regrew",natalie,g7p16_1,2
+2/1/2022 9:45:29,7,18,1,95.17,25.92537,2019-03-26,2019-03-25,Forest,1,0.25,"original, very small disturbance, L8 signal picks up earlier signal, S1 sees nothing",natalie,g7p18_1,1
+2/1/2022 8:37:28,7,7,1,95.63292,26.79363,2019-11-02,2019-10-30,Forest,1,1,original,natalie,g7p7_1,3
+2/1/2022 9:59:52,8,0,1,93.75346,21.16819,2019-02-04,2019-02-02,Forest,1,1,replacement for g8p2_2 (shifted down a bit),natalie,g8p0_1,2
+2/1/2022 10:14:38,8,0,2,93.71748,21.03505,2019-03-21,2019-03-19,Forest,1,0.9,replacement for g8p6_1,ian,g8p0_2,2
+2/1/2022 10:22:07,8,0,3,97.25813,22.29875,2019-03-19,2019-03-14,Forest,1,0.9,"replacement for g8p7_1 (hard to see dist), shifted E",natalie,g8p0_3,5
+2/1/2022 10:31:45,8,0,4,97.59478,24.02857,2019-03-20,2019-03-19,Forest,1,1,replacement for g8p9_1,ian,g8p0_4,1
+2/1/2022 10:44:43,8,0,5,98.7409,22.14024,2019-01-27,2019-01-25,Forest,1,0.7,replacement for g8p14_1 (very hard to discern what the dist was),ian,g8p0_5,2
+2/1/2022 10:51:31,8,0,6,98.80959,22.19142,2019-02-21,2019-02-20,Forest,1,1,"replacement for g8p17_2 (just so that way the pre-dist truly was forest and not including previous dist), barely shifted",natalie,g8p0_6,1
+2/1/2022 10:54:25,8,0,7,98.81127,22.19059,2019-02-21,2019-02-20,Forest,1,0.9,replacement for g8p17_3 (shifted barely so it doesn't include previous dist),natalie,g8p0_7,1
+2/1/2022 10:45:21,8,14,2,98.74204,22.13893,2019-02-05,2019-02-04,Forest,1,1,original,natalie,g8p14_2,1
+2/1/2022 10:49:01,8,17,1,98.80765,22.18851,2019-02-21,2019-02-20,Forest,1,1,"original, same area as g6p0_6-7",natalie,g8p17_1,1
+2/1/2022 12:56:02,8,19,1,98.90335,21.79731,2019-02-16,2019-02-14,Forest,1,0.9,"original, same area as g8p19_1-3",natalie,g8p19_1,2
+2/1/2022 12:58:03,8,19,2,98.90174,21.79659,2019-02-16,2019-02-14,Forest,1,1,"original, same area as g8p19_1-3",natalie,g8p19_2,2
+2/1/2022 12:59:48,8,19,3,98.90102,21.79306,2019-02-16,2019-02-14,Forest,1,1,"original, same area as g8p19_1-3",natalie,g8p19_3,2
+2/1/2022 9:54:40,8,1,1,99.30822,20.94109,2019-02-15,2019-02-14,Forest,1,0.9,original,natalie,g8p1_1,1
+2/1/2022 9:56:34,8,2,1,93.75597,21.16755,2019-02-04,2019-02-02,Forest,1,1,original,natalie,g8p2_1,2
+2/1/2022 10:02:04,8,2,3,93.75465,21.16956,2019-02-04,2019-02-02,Forest,1,0.9,original,natalie,g8p2_3,2
+2/1/2022 10:25:40,8,8,1,97.62184,25.4437,2019-04-18,2019-04-17,Forest,1,0.7,original,natalie,g8p8_1,1
+2/1/2022 13:04:02,9,1,1,98.71475,21.66821,2019-03-03,2019-03-02,Forest,1,1,"original, same area as g9p1_2",natalie,g9p1_1,1
+2/1/2022 13:06:38,9,1,2,98.7173,21.66288,2019-03-03,2019-03-02,Forest,1,1,"original, same area as g9p1_1",natalie,g9p1_2,1
+2/1/2022 13:09:12,9,2,1,97.1172,23.37653,2019-02-12,2019-02-11,Forest,1,0.9,original,natalie,g9p2_1,1
+1/26/2022 14:23:06,42,1,10,95.47929,23.58467,2019-05-17,2019-05-11,Forest,1,0.9,original. Kind of hard to see with the available imagery,ian,g42p1_10,6
+1/26/2022 14:31:04,42,1,12,95.59393,23.64462,2019-05-07,2019-04-29,Forest,1,0.4,"original. small disturbance, a bit difficult to see from imagery but the signal is still there.",ian,g42p1_12,8
+1/26/2022 14:35:47,42,1,13,95.59415,23.64686,2019-05-09,2019-05-07,Forest,1,0.5,"original. also small dist like the previous points (g42p1_10,12). Note that ts shows no signal",ian,g42p1_13,2
+1/26/2022 14:40:32,42,1,14,95.59793,23.647,2019-04-28,2019-04-21,Forest,1,0.9,"original, no signal seen in ts",ian,g42p1_14,7
+1/26/2022 14:45:20,42,1,18,95.58191,23.65039,2019-09-15,2019-08-05,Forest,1,1,"original. long interim bc bad imagery, hence why L8  perc is 1",ian,g42p1_18,41
+1/26/2022 15:36:42,42,1,21,95.46585,23.58076,2019-06-10,2019-05-28,Forest,1,0.9,original. clear dist but not strong signal on ts,ian,g42p1_21,13
+1/26/2022 12:11:28,42,1,7,95.57524,23.67107,2019-03-13,2019-03-10,Forest,1,0.6,same as original,ian,g42p1_7,3
+1/26/2022 13:14:12,42,1,8,95.47917,23.57818,2019-05-21,2019-05-19,Forest,1,0.4,"original point. super small disturbance relative to surrounding landscape, doesn't show up well in ts, so wondering if this is a size thing.",ian,g42p1_8,2
+1/26/2022 13:39:27,42,1,9,95.49564,23.57808,2019-04-21,2019-04-20,Forest,1,1,"original. doesn't show up well in ts, only thing I can think of is because it turns green with cover despite being devoid of trees.",ian,g42p1_9,1
+1/25/2022 11:21:31,42,2,1,95.53187,23.50737,2019-07-19,2019-06-28,Forest,1,1,"",ian,g42p2_1,21
+1/25/2022 15:39:56,42,2,10,95.5352,23.51125,2019-06-10,2019-05-31,Forest,1,1,Imagery from Sentinel-2. Verified by PLANET on 28 May and 28 June,ian,g42p2_10,10
+1/25/2022 15:48:07,42,2,11,95.45938,23.55804,2019-04-29,2019-04-21,Forest,1,0.9,"",ian,g42p2_11,8
+1/26/2022 8:57:38,42,2,12,95.49965,23.52863,2019-05-31,2019-05-28,Forest,1,1,part of a much larger disturbance that was apparently done all within 3 days,ian,g42p2_12,3
+1/26/2022 9:08:39,42,2,13,95.46149,23.57892,2019-11-06,2019-11-03,Forest,1,0.9,"",ian,g42p2_13,3
+1/26/2022 9:14:18,42,2,14,95.46249,23.57933,2019-11-07,2019-11-06,Forest,1,0.6,"same disturbance as previous (g42p2_13), slightly near the boundary",ian,g42p2_14,1
+1/26/2022 9:17:56,42,2,15,95.45994,23.58725,2019-11-06,2019-11-03,Forest,1,0.8,"",ian,g42p2_15,3
+1/26/2022 9:23:25,42,2,16,95.46364,23.58132,2019-10-31,2019-10-29,Forest,1,0.5,"",ian,g42p2_16,2
+1/25/2022 11:41:51,42,2,2,95.57556,23.67099,2019-03-22,2019-03-15,Forest,1,1,"",ian,g42p2_2,7
+1/25/2022 11:49:59,42,2,3,95.43305,23.62966,2019-03-07,2019-03-03,Road,1,0.9,"7 March date is from S2, confirmed by planet on 8 March",ian,g42p2_3,4
+1/25/2022 12:00:29,42,2,4,95.59554,23.64519,2019-05-16,2019-05-11,Forest,1,0.8,"pretty sure this is a disturbance, but ultimately difficult to tell during the dry season and with this imagery",ian,g42p2_4,5
+1/25/2022 13:06:02,42,2,5,95.50828,23.52481,2019-05-31,2019-05-28,Forest,1,0.6,"somewhat difficult to see imagery, but pretty sure this is disturbance",ian,g42p2_5,3
+1/25/2022 13:17:31,42,2,6,95.53524,23.51126,2019-06-10,2019-05-31,Forest,1,0.9,"imagery on 10 June is S2, verified by PLANET on 28 June. imagery on 31 May is S2, verified by PLANET on 28 May",ian,g42p2_6,10
+1/25/2022 13:27:01,42,2,7,95.55266,23.4848,2019-06-10,2019-05-31,Forest,1,1,"Dates are from S2, verified by PLANET on 26 May and 21 June",ian,g42p2_7,10
+1/25/2022 13:32:21,42,2,8,95.55346,23.4862,2019-06-21,2019-05-26,Forest,1,1,this is right next to g42p2_7 but S2 imagery is unclear for this particular point,ian,g42p2_8,26
+1/25/2022 15:07:47,42,2,9,95.50887,23.58771,2019-05-17,2019-05-11,Forest,1,0.8,"",ian,g42p2_9,6
+1/26/2022 9:57:19,42,3,1,95.59193,23.63549,2019-05-30,2019-05-26,Forest,1,1,"replaces g42p1_1. This is really faint dist (dry season), but I'm pretty confident.",ian,g42p3_1,4
+1/26/2022 11:02:50,42,3,2,95.59557,23.64541,2019-05-10,2019-05-07,Forest,1,0.5,"replaces g42p1_2 and 3. This is small, so wouldn't be surprised if this doesn't show up well in ts",ian,g42p3_2,3
+1/26/2022 11:18:12,42,3,3,95.58226,23.63067,2019-07-16,2019-06-28,Forest,1,1,"replaces g42p1_4. Interim is long due to not great imagery. If there is an issue with this point, it's bc the 16 July image is shifted from the 28 June one",ian,g42p3_3,18
+1/26/2022 11:43:32,42,3,4,95.58324,23.65962,2019-10-08,2019-09-28,Forest,1,0.7,"replaces g42p1_5 and 6. Imagery is Sentinel-2, confirmed prior by PLANET on 18 Sept and post on 13 Oct.",ian,g42p3_4,10
+1/26/2022 13:20:07,42,3,5,95.48001,23.57808,2019-09-24,2019-09-21,Forest,1,0.4,"small disturbance, similar to g42p1_8 (and technically part of the same dist)",ian,g42p3_5,3
+1/26/2022 13:22:20,42,3,6,95.48038,23.57885,2019-10-03,2019-09-24,Forest,1,1,"large disturbance overall, no good imagery in interim. This is same dist area as g42p1_8 and g42p3_5",ian,g42p3_6,9
+1/26/2022 15:01:33,42,3,7,95.50577,23.60927,2019-08-31,2019-08-11,Forest,1,0.8,pretty small disturbance,ian,g42p3_7,20
+1/26/2022 15:09:14,42,3,8,95.51595,23.61074,2019-09-19,2019-09-15,Road,1,0.3,super small road blip expansion,ian,g42p3_8,4
+1/26/2022 15:27:11,42,3,9,95.48834,23.57448,2019-05-17,2019-05-07,Forest,1,0.9,replacement for g42p1_20. Small disturbance / a little hard to see in imagery for dry season but ts signal picks it up,ian,g42p3_9,10
+2/1/2022 13:34:07,43,0,1,94.64265,23.21787,2019-03-03,2019-03-02,Forest,1,0.4,"replacement for g43p1_4, barely shifted, part of larger disturbance so that's why I think the signal is so good",ian,g43p0_1,1
+2/1/2022 13:42:28,43,0,2,94.64308,23.21773,2019-03-12,2019-03-04,Forest,1,1,"replacement for g43p1_5, barely shifted",ian,g43p0_2,8
+2/1/2022 13:47:29,43,0,3,94.63596,23.22059,2019-02-14,2019-02-11,Forest,1,1,"replacement for g43p1_7, shifted slightly so as to not be directly on remnant trees",ian,g43p0_3,3
+2/1/2022 13:51:50,43,0,4,94.63543,23.21634,2019-02-14,2019-02-11,Forest,1,0.9,"replacement for g43p1_8, shifted because hard to see dist",ian,g43p0_4,3
+2/1/2022 13:59:36,43,0,5,94.6287,23.21611,2019-03-03,2019-03-02,Forest,1,1,"replacement for g43p1_9, changed bc really hard to tell if there was a dist with the planet imagery",ian,g43p0_5,1
+2/1/2022 14:02:04,43,0,6,94.62892,23.21143,2019-02-14,2019-02-11,Forest,1,1,"replacement for g43p1_10, barely shifted N to be more in middle of dist",ian,g43p0_6,3
+2/1/2022 14:10:27,43,0,7,94.59989,23.22977,2019-03-03,2019-03-02,Forest,1,1,replacement for g43p1_12,ian,g43p0_7,1
+2/1/2022 13:18:52,43,1,1,94.64475,23.14214,2019-02-10,2019-02-05,Forest,1,0.7,original,ian,g43p1_1,5
+2/1/2022 14:06:01,43,1,11,94.63495,23.21051,2019-02-14,2019-02-11,Forest,1,0.9,original,ian,g43p1_11,3
+2/1/2022 13:24:10,43,1,2,94.64816,23.2182,2019-02-14,2019-02-11,Forest,1,0.9,"original, very close to g43p1_3",ian,g43p1_2,3
+2/1/2022 13:27:01,43,1,3,94.64775,23.21828,2019-02-17,2019-02-14,Forest,1,0.9,"original, very close to g43p1_2",ian,g43p1_3,3
+2/1/2022 13:44:49,43,1,6,94.63839,23.21727,2019-02-17,2019-02-16,Forest,1,1,original,ian,g43p1_6,1
+2/1/2022 14:18:55,168,0,1,97.95578,25.50761,2019-04-25,2019-04-23,Forest,1,1,"replacement for g16p1_1, shifted slightly N to be in the center of the dist",ian,g168p0_1,2
+2/1/2022 14:22:17,168,0,2,98.03126,25.59269,2019-04-25,2019-04-23,Forest,1,0.8,"replacement for g16p1_2, shifted slightly to be more in center of dist",ian,g168p0_2,2
+2/1/2022 14:27:22,168,0,3,97.6616,25.47749,2019-03-15,2019-03-13,Forest,1,1,"replacement for g169p3_1, shifted E. Best imagery pre and post is 11 and 15 Mar bc the 13 Mar PLANET image is geographically off. However, the latter doesn't show dist at that date, so we're using that as the pre-date",ian,g168p0_3,2
+2/1/2022 14:30:26,168,0,4,97.59065,25.47253,2019-02-18,2019-02-17,Forest,1,0.9,"replacement for g168p3_2, barely shifted",ian,g168p0_4,1
+2/1/2022 14:38:30,168,0,5,97.36247,21.75592,2019-01-21,2019-01-20,Forest,1,1,"replacement for g168p5_2, shifted barely to be in center",ian,g168p0_5,1
+2/1/2022 14:53:39,168,0,6,97.59509,24.02833,2019-03-19,2019-03-14,Forest,1,1,replacement of g168p9_1 bc that was apparently in China,ian,g168p0_6,5
+2/1/2022 14:33:14,168,4,1,98.9437,23.15751,2019-02-22,2019-02-20,Forest,1,0.6,original,ian,g168p4_1,2
+2/1/2022 14:35:25,168,4,2,98.99731,23.10628,2019-02-17,2019-02-16,Forest,1,0.8,original,ian,g168p4_2,1
+2/1/2022 14:40:50,168,5,3,97.51903,21.75975,2019-01-21,2019-01-20,Forest,1,1,original,ian,g168p5_3,1
+2/2/2022 8:31:50,169,0,1,98.88813,22.33077,2019-02-21,2019-02-20,Forest,1,1,replacement for g169p2_2 (barely shifted),ian,g169p0_1,1
+2/2/2022 8:35:19,169,0,2,98.17343,21.98557,2019-03-01,2019-02-28,Forest,1,1,replacement for g169p3_1 (shifted E for better dates),ian,g169p0_2,1
+2/2/2022 9:00:43,169,0,3,99.18198,22.50665,2019-02-06,2019-02-04,Forest,1,1,"replacement for g169p7_2, shifted W to be more in center of dist",ian,g169p0_3,2
+2/2/2022 9:17:39,169,0,4,99.14298,22.57342,2019-02-04,2019-02-03,Forest,1,1,"replacement for g169p9_1, shifted SE to have better dates",ian,g169p0_4,1
+2/2/2022 9:19:47,169,0,5,99.15102,22.54563,2019-02-04,2019-02-03,Forest,1,1,"replacement for g169p2_1, shifted slightly to be center of dist",ian,g169p0_5,1
+2/2/2022 9:31:52,169,0,6,93.42387,22.61261,2019-10-03,2019-10-02,Forest,1,1,"replacement for g169p12_1, shifted N to be in center of dist",ian,g169p0_6,1
+2/2/2022 9:43:24,169,0,7,97.53794,25.23482,2019-03-24,2019-03-21,Forest,1,1,"replacement for g169p15_1, shifted to be more centered in dist",ian,g169p0_7,3
+2/2/2022 9:48:54,169,0,8,99.17588,22.57398,2019-04-05,2019-04-04,Forest,1,0.9,"replacement for g169p16_1, shifted slightly to be centered in dist",ian,g169p0_8,1
+2/2/2022 10:00:32,169,0,9,97.55044,23.67773,2019-02-24,2019-02-22,Forest,1,0.4,"replacement for g169p18_1, original point was not a dist on that date but couldn't see due to imagery, so this is a full replacement",ian,g169p0_9,2
+2/2/2022 9:28:33,169,10,1,99.45143,21.78905,2019-02-21,2019-02-19,Forest,1,1,original,ian,g169p10_1,2
+2/2/2022 9:34:39,169,12,2,93.43374,22.61873,2019-09-18,2019-09-17,Forest,1,1,"original, this was flagged before for having a long latency / false neg, but the dist is very clear from imagery",ian,g169p12_2,1
+2/2/2022 9:37:13,169,14,1,99.9709,21.41902,2019-02-06,2019-02-04,Forest,1,1,original,ian,g169p14_1,2
+2/2/2022 9:40:33,169,14,2,99.982875,21.406125,2019-01-27,2019-01-23,Forest,1,1,original,ian,g169p14_2,4
+2/2/2022 9:45:53,169,15,2,97.52143,25.23276,2019-03-24,2019-03-21,Forest,1,0.8,original,ian,g169p15_2,3
+2/2/2022 10:02:44,169,19,1,98.64267,21.10741,2019-01-31,2019-01-30,Forest,1,1,original,ian,g169p19_1,1
+2/2/2022 8:29:19,169,2,1,98.88628,22.32981,2019-02-21,2019-02-20,Forest,1,0.8,original,ian,g169p2_1,1
+2/2/2022 8:37:26,169,4,1,97.57407,25.30497,2019-04-11,2019-04-08,Forest,1,1,original,ian,g169p4_1,3
+2/2/2022 8:41:17,169,6,1,98.06432,25.64526,2019-03-29,2019-03-24,Forest,1,0.9,"original, but initially flagged for having high false pos. This might be because it was burned? I extended the previous date so we'll see if the models perform better",ian,g169p6_1,5
+2/2/2022 8:45:17,169,7,1,99.15969,22.52341,2019-02-06,2019-02-04,Forest,1,1,original,ian,g169p7_1,2
+2/2/2022 9:04:13,169,8,1,99.10803,21.21076,2019-02-21,2019-02-20,Forest,1,0.9,original,ian,g169p8_1,1
+2/2/2022 9:12:41,169,8,2,99.08503,21.15328,2019-02-23,2019-02-22,Forest,1,0.9,original,ian,g169p8_2,1
+2/2/2022 9:21:30,169,9,3,99.16607,22.63709,2019-02-04,2019-02-03,Forest,1,1,original,ian,g169p9_3,1
+2/2/2022 10:15:50,170,0,1,98.28182,23.3298,2019-02-08,2019-02-07,Forest,1,0.9,"replacement for g170p4_1, shifted slightly to be centered in dist",ian,g170p0_1,1
+2/2/2022 10:23:56,170,0,2,98.83027,22.47323,2019-02-21,2019-02-20,Forest,1,1,replacement for g170p5_2,ian,g170p0_2,1
+2/2/2022 10:31:40,170,0,3,95.70417,26.4464,2019-02-08,2019-02-07,Forest,1,0.9,"replacement for g170p6_1, shifted E. Note that original point was flagged for giving terrible results",ian,g170p0_3,1
+2/2/2022 10:37:41,170,0,4,95.70031,26.44641,2019-02-03,2019-02-02,Forest,1,1,replacement for g170p6_2,ian,g170p0_4,1
+2/2/2022 10:40:44,170,0,5,95.7064,26.44874,2019-02-08,2019-02-07,Forest,1,0.8,"replacement for g170p6_3, shifted slightly",ian,g170p0_5,1
+2/2/2022 10:42:55,170,0,6,95.70645,26.4502,2019-02-08,2019-02-07,Forest,1,1,replacement for g170p6_4,ian,g170p0_6,1
+2/2/2022 10:06:29,170,2,1,93.19817,22.85298,2019-10-31,2019-10-29,Forest,1,0.9,original,ian,g170p2_1,2
+2/2/2022 10:08:31,170,2,2,93.19736,22.85753,2019-11-01,2019-10-31,Forest,1,1,original,ian,g170p2_2,1
+2/2/2022 10:12:41,170,3,1,97.1748,24.06032,2019-01-17,2019-01-15,Forest,1,1,"original, there's definitely logs left over on the ground (or the ground was burned?), so S1 signal doesn't capture this until later",ian,g170p3_1,2
+2/2/2022 10:20:13,170,5,1,98.82346,22.47507,2019-03-04,2019-03-01,Forest,1,1,"original, this is a clear dist but because it's within a larger complex, L8 picks up the signal earlier",ian,g170p5_1,3
+2/2/2022 10:26:02,170,5,3,98.82675,22.47348,2019-02-06,2019-02-05,Forest,1,1,original,ian,g170p5_3,1
