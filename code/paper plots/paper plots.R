@@ -1,127 +1,103 @@
-
-####### State figure
-
+library(data.table)
 
 
-
-
-####### run length figure
-
-
-
-
-
-
-
-
-
-######## Simulation data plot
-set.seed(45814)
-scenario <- 7
-# generate data
-yrs <- 15
-npts=18
-t <- seq(1,yrs*365,length.out=yrs*npts)
-period=365
-
-X <- cbind(1,sin(2*pi*t/period),cos(2*pi*t/period),t/1000)
-
-make_scenario <-  generate_scenario(scenario,yrs=yrs,npts=npts,l1=10,l2=5)
-
-Y <- make_scenario$Y
-
-png("Plots/simulation_data_7.png")
-par(mfrow=c(2,1),mar=c(4,4,2,2))
-plot(Y[,1],ylab="Signal 1",xlab="Time point")
-plot(Y[,2],ylab="Signal 2",xlab="Time point")
-dev.off()
-
-
-######## Simulation data plot with states and run length
-set.seed(45814)
-set.seed(9264)
-source("sim_study_helpers.R")
-scenario <- 7
-# generate data
-yrs <- 15
-npts=18
-t <- seq(1,yrs*365,length.out=yrs*npts)
-period=365
-
-X <- cbind(1,sin(2*pi*t/period),cos(2*pi*t/period),t/1000)
-
-make_scenario <-  generate_scenario(scenario,yrs=yrs,npts=npts,l1=10,l2=5)
-
-Y <- make_scenario$Y
-
-rl <- c(seq(1,180),seq(1,90))
-st <- c(rep(1,180),rep(2,90))
-st[make_scenario$outlier] <- 0
-plot(rl,type="l")
-png("Plots/simulation_data_7.png",width=1500,height=800)
-par(mfrow=c(2,2),cex=1.3)
-# make labels and margins smaller
-par(fig=c(0.03,0.49,0.63,.97))
-par(mar=c(0.1,4,0.5,1))
-plot(1:270,Y[,1],ylab="Signal 1",xaxt="n",xlab="",pch=20)
-text(make_scenario$outlier,0.78,"outlier",pos=4)
-text(300,0.8,"(a)",xpd=NA)
-
-par(fig=c(0.51,0.97,0.63,0.97),new=T)
-par(mar=c(0.1,4,0.5,1))
-plot(1:270,st,type="l",ylim=c(0,3),yaxt='n',ylab="State",xaxt="n",xlab="")
-axis(2,at=c(0,1,2))
-text(300,3,"(b)",xpd=NA)
-
-par(fig=c(0.03,0.49,0.03,0.63),new=T)
-par(mar=c(4,4,0.5,1))
-
-plot(1:270,Y[,2],ylab="Signal 2",xlab="Time Point",pch=20)
-text(make_scenario$outlier,0.14,"outlier",pos=4)
-text(300,0.65,"(c)",xpd=NA)
-
-
-par(fig=c(0.51,0.97,0.03,0.63),new=T)
-par(mar=c(4,4,0.5,1))
-plot(rl,type='l',ylab="Run length",xlab="Time Point")
-text(300,180,"(d)",xpd=NA)
-
-dev.off()
-
-
-png("Plots/simulation_data_7_signal1.png",width=4,height=1.7,units="in",res=72)
-par(mfrow=c(1,1),mar=c(4,4,0.5,1.7),cex=1)
-# make labels and margins smaller
-plot(1:270,Y[,1],ylab="Signal 1",xaxt="n",xlab="",pch=20)
-text(make_scenario$outlier,0.78,"outlier",pos=4)
-text(300,0.8,"(a)",xpd=NA)
-dev.off()
-
-png("Plots/simulation_data_7_state.png",width=4,height=1.7,units="in",res=72)
-par(mfrow=c(1,1),mar=c(4,4,0.5,1.7),cex=1)
-plot(1:270,st,type="l",ylim=c(0,3),yaxt='n',ylab="State",xaxt="n",xlab="")
-axis(2,at=c(0,1,2))
-text(300,3,"(b)",xpd=NA)
-dev.off()
-
-png("Plots/simulation_data_7_signal2.png",width=4,height=1.7,units="in",res=72)
-par(mfrow=c(1,1),mar=c(4,4,0.5,1.7),cex=1)
-plot(1:270,Y[,2],ylab="Signal 2",xlab="Time Point",pch=20)
-text(make_scenario$outlier,0.14,"outlier",pos=4)
-text(300,0.65,"(c)",xpd=NA)
-dev.off()
-
-png("Plots/simulation_data_7_rl.png",width=4,height=1.7,units="in",res=72)
-par(mfrow=c(1,1),mar=c(4,4,0.5,1.7),cex=1)
-plot(rl,type='l',ylab="Run length",xlab="Time Point")
-text(300,180,"(d)",xpd=NA)
-
-dev.off()
-
-
+####### Figure 1: Time series of SWIR2 and NDVI with filtered points shown
+# visualization data (point 70)
 # Myanmar data
 ### with bad points
+# Load visualization dataset
+# variables needed ####
+set.seed(42)
+country <- "myanmar" #all scripts
+dataFolder <- paste0("data/", country, "/") #all scripts
+inputFolder <- "visualization_points" 
+trainingPointsFile <- "visualization_points.csv"
+
+#load pointIDs
+base <- fread(paste0(dataFolder, trainingPointsFile))
+pointids <- sort(unique(base[,pointid]))
+
+pointData <- trainingPointsFile
+
+fn <- paste0(dataFolder,inputFolder,"/landsatsr.csv")
+df <- read.table(fn,sep=",",header=T)
+df$date <- as.Date(df$date,format="%Y-%m-%d")
+
+bandNames = c("SR_B4", "SR_B5","SR_B7", "QA_PIXEL", "QA_RADSAT", "SR_QA_AEROSOL")
+indices <- filterThenIndex(df,sat="landsat8sr",bandNames=bandNames)
+
+colnames(indices) <- c("valid","ndvi","swir2")
+
+df <- data.table(df,indices)
+
+#bring in dates to be used for model runs
+base <- fread(paste0(dataFolder, pointData))
+base <- base[,.(pointid, datePre, dateDist,distPercL8)]
+setnames(base, old=c("datePre", "dateDist","distPercL8"),
+         new=c("date_model", "date_dist","dist_perc"))
+
+ids <- sort(unique(base[,pointid]))
+
+#update dates
+date_fn <- function(dae){
+  date_true <- ifelse(is.na(as.Date(dae)) | (Sys.Date() - as.Date(dae)) > 10000, 
+                      as.Date(dae, format="%d/%m/%Y"),
+                      as.Date(dae))
+  date_true <- as.Date(date_true, origin="1970-01-01")
+  return(date_true)
+}
+
+base <- base[, `:=` (date_model = date_fn(date_model),
+                     date_dist = date_fn(date_dist))]
+
+get_moddate <- function(sat_list=sat_list){
+  dat <- sat_list
+  setkey(dat, pointid)
+  setkey(base, pointid)
+  dat <- dat[base]
+}
+
+df <- get_moddate(data.table(df))
+
 #2. calculate NDVI and SWIR
+
+
+# split into point ids for dataset with all corrupted points
+dfc <- split(df,df$pointid)
+
+# split into point ids for pure dataset
+df_pure <- df %>% mutate(goodquality=valid)
+#4. filter out bad qa
+df_pure <- df_pure %>% filter(goodquality)
+
+dfl_pure <- split(df_pure,df_pure$pointid)
+dfl_pure <- lapply(dfl_pure,function(x){
+  xi <- mutate(x,t=as.numeric(x$date-min(x$date)))
+  xi <- arrange(xi,date)
+  mutate(xi,ti=1:nrow(xi))
+  # filter
+})
+#3. Keep in some bad points
+corrupted <- sample(which(!df$valid&!is.na(df$ndvi)&!is.na(df$swir2)),200)
+df <- df %>% mutate(goodquality=valid)
+df$goodquality[corrupted] <- T
+#4. filter out bad qa
+df <- df %>% filter(goodquality)
+
+#df <- df %>% filter(valid_qa&valid_radsatqa&valid_aerosol&valid_cloudAndRadqa)
+
+#4. split into pointids and sort
+dfl <- split(df,df$pointid)
+dfl <- lapply(dfl,function(x){
+  xi <- mutate(x,t=as.numeric(x$date-min(x$date)))
+  xi <- arrange(xi,date)
+  mutate(xi,ti=1:nrow(xi))
+  # filter
+})
+
+### Figure 1: SWIR, NDVI ts with filtered points
+#2. calculate NDVI and SWIR
+dfc <- dfc
 dfc <- F1_onboard$sat_list$l8sr
 dfc <- dfc %>% mutate(ndvi = (B5-B4)/(B5+B4))
 dfc <- dfc %>% mutate(swir2 = B7/1e4)
@@ -129,8 +105,8 @@ dfc <- dfc %>% mutate(goodquality=valid_qa&valid_radsatqa&valid_aerosol&valid_cl
 
 dfcl <- split(dfc,dfc$pointid)
 #95 is okay, 92, 70, 68,65, 54. 70 is  great!
-pi <- 70
-dfi <- dfcl[[pi]]
+pit <- 70
+dfi <- dfcl[[pit]]
 png("Plots/Myanmar_data_swir2_QA.png",width=500,height=200)
 par(mfrow=c(1,1),mar=c(2,4,1,1),cex=1.5)
 plot(dfi$date,dfi$swir2,ylim=c(0,1),xlab="Year",ylab="SWIR2")
@@ -151,6 +127,94 @@ par(mfrow=c(1,1),mar=c(0,0,0,0),cex=1.5)
 plot.new()
 legend("topleft",xpd=T,legend=c("Data","Invalid QA","Outlier"),col=c(1,2,4),pch=c(1,4,1),lwd=c(1,2,2),lty=c(NA,NA,NA))
 dev.off()
+
+
+####### Figure 2: Observed SWIR2 and NDVI measurements
+# visualization data (point 24)
+
+####### Figure 3: Simulation signals with an outlier, run length plot, 
+# and state diagram
+
+set.seed(9264)
+source("code/functions/sim_study_helpers.R")
+scenario <- 7
+# generate data
+yrs <- 15
+npts=18
+t <- seq(1,yrs*365,length.out=yrs*npts)
+period=365
+
+X <- cbind(1,sin(2*pi*t/period),cos(2*pi*t/period),t/1000)
+
+make_scenario <-  generate_scenario(scenario,yrs=yrs,npts=npts,l1=10,l2=5)
+
+Y <- make_scenario$Y
+
+rl <- c(seq(1,180),seq(1,90))
+st <- c(rep(1,180),rep(2,90))
+st[make_scenario$outlier] <- 0
+
+png("plots/simulation_data_7_signal1.png",width=4,height=1.7,units="in",res=72)
+par(mfrow=c(1,1),mar=c(4,4,0.5,1.7),cex=1)
+# make labels and margins smaller
+plot(1:270,Y[,1],ylab="Signal 1",xaxt="n",xlab="",pch=20)
+text(make_scenario$outlier,0.78,"outlier",pos=4)
+text(300,0.8,"(a)",xpd=NA)
+dev.off()
+
+png("plots/simulation_data_7_state.png",width=4,height=1.7,units="in",res=72)
+par(mfrow=c(1,1),mar=c(4,4,0.5,1.7),cex=1)
+plot(1:270,st,type="l",ylim=c(0,3),yaxt='n',ylab="State",xaxt="n",xlab="")
+axis(2,at=c(0,1,2))
+text(300,3,"(b)",xpd=NA)
+dev.off()
+
+png("plots/simulation_data_7_signal2.png",width=4,height=1.7,units="in",res=72)
+par(mfrow=c(1,1),mar=c(4,4,0.5,1.7),cex=1)
+plot(1:270,Y[,2],ylab="Signal 2",xlab="Time Point",pch=20)
+text(make_scenario$outlier,0.14,"outlier",pos=4)
+text(300,0.65,"(c)",xpd=NA)
+dev.off()
+
+png("plots/simulation_data_7_rl.png",width=4,height=1.7,units="in",res=72)
+par(mfrow=c(1,1),mar=c(4,4,0.5,1.7),cex=1)
+plot(rl,type='l',ylab="Run length",xlab="Time Point")
+text(300,180,"(d)",xpd=NA)
+
+dev.off()
+
+
+####### Figure 4: workflow
+
+####### Figure 5: Myanmar results: (visualization data point 70)
+# with outliers removed and change dates shown
+
+####### Figure 6: Myanmar run lengths
+
+
+
+
+
+
+####### State figure
+
+
+
+
+
+####### run length figure
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## 
@@ -362,8 +426,8 @@ dev.off()
 set.seed(42)
 country <- "myanmar" #all scripts
 dataFolder <- paste0("data/", country, "/") #all scripts
-inputFolder <- "geeNewFeb22" 
-trainingPointsFile <- "trainingDataPoints.csv"
+inputFolder <- "analysis_points" 
+trainingPointsFile <- "analysis_points.csv"
 
 #load pointIDs
 base <- fread(paste0(dataFolder, trainingPointsFile))
