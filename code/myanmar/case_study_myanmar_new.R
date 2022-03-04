@@ -2,28 +2,22 @@ library(data.table)
 library(tidyverse)
 library(mvtnorm)
 library(parallel)
-library(bfast)
 library(MCMCpack)
 library(reticulate)
 source("ccdc.R")
 source("priors_myanmar.R")
-library(BOCPD)
+library(roboBayes)
 # Before starting:
-## Each function will output its result to the Global Env, regardless of your
-## choice for the "saveRdata" argument.
-### The argument "priorRdata" asks if you want to load a saved Rdata file from
-### the previous chronological script.
 
 
 n.cores=16
 
 
 # choose analyses to conduct
-ft <- "myanmar_v2"
-run.BOCPDOD <- T
+ft <- "myanmar"
+run.roboBayes <- T
 run.BOCPD <- T
 run.CCDC <- T
-run.BFAST <- F
 run.BOCPDMS <- F
 run.rBOCPDMS <- F
 
@@ -32,15 +26,8 @@ run.rBOCPDMS <- F
 set.seed(42)
 country <- "myanmar" #all scripts
 dataFolder <- paste0("data/", country, "/") #all scripts
-inputFolder <- "geeNewFeb22" #"geeAll" #geeWindow or geeNewDec20
-#inputFolder <- "geeNewDec20"
-#trainingPointsFile <- "training_points_window.csv" 
-trainingPointsFile <- "trainingDataPoints.csv"#"training_points_all.csv"
-index <- "ndvi" ## eventually to include more
-method = "har" ## method = "ccdc" or "har" [nonlinear harmonic]
-desp = "median" ## desp = "median", "Frost", "RLF", "GMfull"
-pol = "vv" ## eventually include "vh" or "ratio"
-look = "ascending" ## or "descending"
+inputFolder <- "analysis_points"
+trainingPointsFile <- "analysis_points.csv"
 
 #load pointIDs
 base <- fread(paste0(dataFolder, trainingPointsFile))
@@ -48,23 +35,7 @@ pointids <- sort(unique(base[,pointid]))
 
 pointData <- trainingPointsFile
 
-#0. Prep S1 data ####
-# MUST RUN THIS IF NEW Sentinel 1 GEE DATA
-# this consolidates all the s1 speckle filters to one table
-# file created = "sentinel1.csv"
-
-# source("scripts/0_preps1.R")
-# preps1_despeckle("myanmar", inputFolder=inputFolder)
-
-#1. cloud-masking and satellite data processing ####
-## variable created = onboard (list of 2 - some quick stats, and data for next steps)
-## file created = "sat_data_[country].Rdata"
-#source("scripts/1_cloudmasking.R")
-# F1_onboard <- onboard_cloud(country, inputFolder=inputFolder, 
-#                             pointData=trainingPointsFile,
-#                             saveRdata=FALSE)
-
-
+###### Data prep
 fn <- paste0(dataFolder,inputFolder,"/landsat8sr.csv")
 df <- read.table(fn,sep=",",header=T)
 df$date <- as.Date(df$date,format="%Y-%m-%d")
@@ -105,11 +76,7 @@ get_moddate <- function(sat_list=sat_list){
 
 df <- get_moddate(data.table(df))
 
-#2. calculate NDVI and SWIR
-# df <- F1_onboard$sat_list$l8sr
-# df <- df %>% mutate(ndvi = (B5-B4)/(B5+B4))
-# df <- df %>% mutate(swir2 = B7/1e4)
-# split into point ids for pure dataset
+# split into point ids for pure dataset (no corrupted points)
 df_pure <- df %>% mutate(goodquality=valid)
 #4. filter out bad qa
 df_pure <- df_pure %>% filter(goodquality)
@@ -128,8 +95,6 @@ df$goodquality[corrupted] <- T
 #4. filter out bad qa
 df <- df %>% filter(goodquality)
 
-#df <- df %>% filter(valid_qa&valid_radsatqa&valid_aerosol&valid_cloudAndRadqa)
-
 #4. split into pointids and sort
 dfl <- split(df,df$pointid)
 dfl <- lapply(dfl,function(x){
@@ -140,7 +105,7 @@ dfl <- lapply(dfl,function(x){
 })
 #5. Get priors
 
-
+# fit models on pure data to estimate prior hyperparameters
 sample_data_list_pure <- mclapply(dfl_pure,function(dfi){
   t <- dfi$t
   period=365
@@ -155,9 +120,8 @@ sample_data_list_pure <- mclapply(dfl_pure,function(dfi){
 priors <- get_priorsm(data_list=sample_data_list_pure,d=2,k=4)
 
 piMine <- priors
-#piMine$V <- 2*piMine$V
-#piMine$Lambda <- diag(c(0.01,1,1,10))
-# 
+
+# fit models and residuals on corrupted data to get residuals
 sample_data_list <- mclapply(dfl,function(dfi){
   t <- dfi$t
   period=365
@@ -177,7 +141,6 @@ dfl <- mapply(function(dfi,x){
   return(dfi)
 },dfi=dfl,x=sample_data_list,SIMPLIFY = F)
 
-#all_results <- foreach(n = 1:maxiters, .packages = c("mvtnorm","bfast","MCMCpack","reticulate"), .errorhandling="pass") %dopar% {
 all_results <- mclapply(dfl,function(dfi){
   output <- list()
   # make covariate matrix
@@ -202,22 +165,12 @@ all_results <- mclapply(dfl,function(dfi){
     output$ccdc_time = (proc.time()-start)[3]
   }
   
-  if(run.BFAST){
-    # analyze using BFAST
-    start = proc.time()
-    bfast_results <- runBFAST(Yi,t,tfreq=npts,start_cp=c(6,1))
-    output$bfast_cps = bfast_results$cps
-    output$bfast_detected = bfast_results$cp_det
-    output$bfast_time = (proc.time()-start)[3]
-  }
-
-  
-  if(run.BOCPDOD){
+  if(run.roboBayes){
     # analyze using BOCPD
     start=proc.time()
-    bocpd_mod <- bocpd(datapts = Yi,
+    bocpd_mod <- roboBayes(datapts = Yi,
                           covariates = X,
-                          BOCPD = NULL,
+                          RoboBayes = NULL,
                           par_inits = piMine,
                           Lsearch = 15,
                           Lwindow = 8,
@@ -244,9 +197,9 @@ all_results <- mclapply(dfl,function(dfi){
   }
   if(run.BOCPD){
     start=proc.time()
-    bocpd_mod_no <- bocpd(datapts = Yi,
+    bocpd_mod_no <- roboBayes(datapts = Yi,
                    covariates = X,
-                   BOCPD = NULL,
+                   RoboBayes = NULL,
                    par_inits = piMine,
                    Lsearch = 15,
                    Lwindow = 8,
@@ -272,13 +225,6 @@ all_results <- mclapply(dfl,function(dfi){
   }
   
   # analyze with robust bocpd
-  #setwd("C:/Users/Laura/Documents/GitHub/rbocpdms/rbocpdms-master")
-  
-  #write.table(Y,"C:/Users/Laura/Documents/GitHub/rbocpdms/rbocpdms-master/Data/well log/sim.txt",row.names=F,col.names=F,sep=",")
-  #setwd("C:/Users/Laura/SkyDrive/Documents/NCSU/Spring 2021/CPD/R")
-  
-  #write.table(Y,"sim.txt",row.names=F,col.names=F,sep=",")
-  
   if(run.rBOCPDMS){
     assign("Y", Y, envir = globalenv())
     start=proc.time()
@@ -306,5 +252,5 @@ all_results <- mclapply(dfl,function(dfi){
   return(output)
 },mc.cores=n.cores,mc.preschedule=F)
 #}
-save(file = paste(ft,".RData",sep=""),list=c("all_results","dfl"))
+save(file = paste("results/",ft,".RData",sep=""),list=c("all_results","dfl"))
 

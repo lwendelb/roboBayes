@@ -84,7 +84,7 @@ get_other_metrics <- function(datai,truecps,atype){
         metrics <- get_metrics_from_cps(cp_info$ccdc_cps,cp_info$ccdc_cps+2,true_cp=truecp,tol=5)
         t1 <- cp_info$ccdc_time
       }
-      if(atype=="bocpdod"){
+      if(atype=="roboBayes"){
         metrics <- get_metrics_from_cps(cp_info$bocpd_cps,cp_info$bocpd_det,true_cp=truecp,tol=5)
         t1 <- cp_info$bocpd_time
         
@@ -95,38 +95,8 @@ get_other_metrics <- function(datai,truecps,atype){
         
         
       }
-      #bfast_metrics <- get_metrics_from_cps(cp_info$bfast_cps,cp_info$bfast_detected,tol=2)
       
-      
-      
-      # bocpd_metrics <- mapply(function(x,y){
-      #   get_metrics_from_cps(x,y,tol=2)
-      # },cp_info$bocpd_cps,cp_info$bocpd_det)
-      #bfast_latency <- cp_info$bfast_detected-cp_info$bfast_cps
-      
-      # bocpd_latency <- mapply(function(x1,x2){
-      #   ifelse(length(x2-x1)>=1,x2-x1,NA)
-      # },cp_info$bocpd_cps,cp_info$bocpd_det)
-      # 
-      # bocpd2_latency <- mapply(function(x1,x2){
-      #   ifelse(length(x2-x1)>=1,x2-x1,NA)
-      # },cp_info$bocpd2_cps,cp_info$bocpd2_det)
-      
-      #bocpd_metrics <- get_metrics_from_cps(cp_info$bocpd_cps)
-      #bocpd_latency <- cp_info$bocpd_det - cp_info$bocpd_cps
       return(c(metrics,list(tm=t1)))
-      # return(list(ccdc_TP=ccdc_metrics$TP,ccdc_FP=ccdc_metrics$FP,
-      #             bfast_TP=bfast_metrics$TP,bfast_FP=bfast_metrics$FP,
-      #             bocpd_metrics=bocpd_metrics,
-      #             bocpd2_metrics=bocpd2_metrics,
-      #             bocpd_TP=bocpd_metrics$TP,bocpd_FP=bocpd_metrics$FP,
-      #             bocpd2_TP=bocpd2_metrics$TP,bocpd2_FP=bocpd2_metrics$FP,
-      #             bfast_latency=bfast_latency,
-      #             bocpd_latency=bocpd_latency,
-      #             bocpd2_latency=bocpd2_latency,
-      #             bfast_latency_TP=bfast_metrics$latency_TP,
-      #             bocpd_latency_TP=bocpd_metrics$latency_TP,
-      #             bocpd2_latency_TP=bocpd2_metrics$latency_TP))
     }
     else{return(list(TP=NA,FP=NA,Precision=NA,Recall=NA,Fb=NA,latency=NA,tm=NA))}
   },cp_info=datai,truecp=truecps,SIMPLIFY = F)
@@ -184,7 +154,7 @@ get_summary <- function(metricsi,getsd=F){
 
 other_data <- list()
 for(k in seq(1,13)){
-  fn <- load(paste("v3_results/sensitivity",k,"myanmar.RData",sep=""))
+  fn <- load(paste("results/sensitivity",k,"myanmar.RData",sep=""))
   other_data <- c(other_data,list(all_results))
 }
 
@@ -193,16 +163,16 @@ truecps <- lapply(dfl,function(dfi){
   dfi$ti[which(dfi$date_dist<=dfi$date)[1]]
 })
 
-metrics_bocpdod <- lapply(other_data,function(x){get_other_metrics(x,truecps,atype="bocpdod")})
-bocpdod_mean <- sapply(metrics_bocpdod,function(x){get_summary(x)})
+metrics_roboBayes <- lapply(other_data,function(x){get_other_metrics(x,truecps,atype="roboBayes")})
+roboBayes_mean <- sapply(metrics_roboBayes,function(x){get_summary(x)})
 
-mn_table <- (bocpdod_mean)
+mn_table <- (roboBayes_mean)
 
 mn_table <- apply(mn_table,c(1,2),function(x){
   format(x,digits=1,nsmall=2)
 })
 
-load("myanmar_priors.Rdata")
+load("results/myanmar_priors.Rdata")
 
 sim_settings <- matrix(c(1,priors$nu,0.5,0.5,1,3),nrow=13,ncol=6,byrow=T)
 sim_settings[2,1] <- 10
@@ -224,7 +194,7 @@ tab <- cbind(sim_settings,t(mn_table))
 colnames(tab) <- c("$\\Lambda_0$ scale","$\\nu_0$","$\\alpha$","$p_o$","$V_0$ scale","L","TP","FP","F-score","Latency","Time (ms)")
 
 library(xtable)
-cap <- c("Summary statistics comparing sensitivity of RobOBayes to priors and tuning parameters of detection of the first change point in annotated Myanmar deforestation data.")
+cap <- c("Summary statistics comparing sensitivity of roboBayes to priors and tuning parameters of detection of the first change point in annotated Myanmar deforestation data.")
 label <- "tab:myanmar_sensitivity_results"
 print(xtable(tab, type = "latex",caption=cap,label=label),
       sanitize.text.function = identity,
@@ -238,42 +208,3 @@ print(xtable(tab, type = "latex",caption=cap,label=label),
 
 
 
-# 
-# bocpdod_metrics <- get_other_metrics(other_data,atype="bocpdod")
-# bocpdod_mean <- get_summary(bocpdod_metrics,getsd=F)
-# bocpdod_sd <- get_summary(bocpdod_metrics,getsd=T)
-# 
-# 
-# 
-# 
-# 
-# library(xtable)
-# 
-# 
-# all_mns <- data.frame(bocpdod_mean)
-# all_se <- data.frame(bocpdod_sd)
-# colnames(all_mns) <- c("TP","FP","F-score","Latency","Time (s)")
-# colnames(all_se) <- c("TP","FP","F-score","Latency","Time (s)")
-# 
-# inds<- expand.grid(1:nrow(all_mns),1:ncol(all_mns))
-# 
-# mn_table <- all_mns
-# sd_table <- all_se
-# tab <- cbind(sim_settings,matrix(c(sapply(1:nrow(inds),function(y){
-#   paste(format(as.numeric(mn_table[inds[y,1],inds[y,2]]),nsmall=2,digits=1),
-#         "\\textsubscript{",
-#         format(as.numeric(sd_table[inds[y,1],inds[y,2]]),nsmall=2,digits=1),"}",sep="")
-# })),nrow(mn_table),ncol(mn_table)))
-# 
-# colnames(tab) <- c("$\\mu$","$\\Lambda_0$ scale","$\\nu_0$","$\\alpha$","$p_o$","TP","FP","F-score","Latency","Time (s)")
-# 
-# cap <- "Average metrics (standard errors are in subscripts) for the simulation sensitivity
-# study applied to scenario 7.\\\\"
-# label <- "tab:sim_sensitivity_results"
-# print(xtable(tab, type = "latex",caption=cap,label=label),
-#       sanitize.text.function = identity,
-#       include.rownames = FALSE,
-#       caption.placement = "top",
-#       table.placement="H",
-#       hline.after=c(-1,0), file = paste("ss_sensitivity_metrics_table.tex",sep=""),
-# )
