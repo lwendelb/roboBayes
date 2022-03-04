@@ -192,8 +192,9 @@ dev.off()
 
 ####### Figure 5: Myanmar results: (visualization data point 70)
 # with outliers removed and change dates shown
-load("paper plots/myanmar_default.RData")
-load("paper plots/myanmar_priors.RData")pit <- 1#73
+load("code/paper plots/myanmar_default.RData")
+load("code/paper plots/myanmar_priors.RData")
+pit <- 1#73
 dfi <- dfl[[pit]]
 t <- dfi$t
 period <- 365
@@ -204,6 +205,13 @@ Yi <- cbind(dfi$ndvi,dfi$swir2)
 
 # pull out change point number
 truecp <- dfi$ti[which(dfi$date_dist<=dfi$date)[1]]
+piMine <- priors
+piMine$nu <- as.matrix(nu)
+
+piMine <- list(B = matrix(0.5,1,2),
+               V = (10.01-2-1)*diag(rep(0.001,2)),
+               nu = 10.01,
+               Lambda = diag(.5,1,1))
 
 bocpd_mod_o <- roboBayes::roboBayes(datapts = Yi,
                      covariates = X,
@@ -222,8 +230,21 @@ bocpd_mod_o <- roboBayes::roboBayes(datapts = Yi,
                      pc=0.5,
                      alpha=0.9,
                      getR = FALSE,
-                     getOutliers = TRUE,
+                     getOutliers = F,
                      getModels = FALSE)
+
+
+X <- rep(1,100)
+Y <- rnorm(100,0,1)
+piMine <- list(B = matrix(0.5,1,1),
+               V = (10.01-2-1)*matrix(0.001),#diag(rep(0.001,1)),
+               nu = 10.01,
+               Lambda = diag(.5,1,1))
+
+bocpd_mod_o <- roboBayes::roboBayes(datapts = Y,
+                                    covariates = X,
+                                    RoboBayes = NULL,
+                                    par_inits=piMine)
 
 # analyze using BOCPD
 bocpd_mod_no <- robomon(datapts = Yi,
