@@ -295,16 +295,17 @@ plt <- ggplot(thing2)
 plt <- plt + theme_classic() 
 plt <- plt + scale_color_gradient(low="white", high="black",
                                   name = "Run length \n probability \n")
-plt <- plt + geom_point(aes(x=s1,y=s2,color=R2))
+plt <- plt + geom_point(aes(x=s1,y=s2,color=R2),size=0.3)
 plt <- plt + xlab("Time point") + ylab("Run length")
 plt
-ggsave(filename="plots/myanmar_rl.png",width=3,height=1,units="in",scale=1.2)
+ggsave(filename="plots/myanmar_rl.png",width=3,height=1.2,units="in",scale=2,dpi=1000)
 
 plt <- ggplot(thing1)
 plt <- plt + theme_classic() 
 plt <- plt + scale_color_gradient(low="white", high="black",
                                   name = "Run length \n probability \n")
-plt <- plt + geom_point(aes(x=s1,y=s2,color=R2))
+plt <- plt + geom_point(aes(x=s1,y=s2,color=R2),size=0.3)
 plt <- plt + xlab("Time point") + ylab("Run length")
 plt
-ggsave(filename="plots/myanmar_rl_outliers.png",width=3,height=1,units="in",scale=1.2)
+
+ggsave(filename="plots/myanmar_rl_outliers.png",width=3,height=1.2,units="in",scale=2,dpi=1000)
