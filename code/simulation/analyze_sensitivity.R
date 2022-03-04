@@ -1,76 +1,3 @@
-
-
-other_data <- list()
-for(k in seq(1,11)){
-  fn <- load(paste("v3_results/ss",k,"sensitivity_v3.RData",sep=""))
-  other_data <- c(other_data,list(all_results))
-}
-
-bocpdod_metrics <- get_other_metrics(other_data,atype="bocpdod")
-bocpdod_mean <- get_summary(bocpdod_metrics,getsd=F)
-bocpdod_sd <- get_summary(bocpdod_metrics,getsd=T)
-
-sim_settings <- matrix(c(0.5,1,20,0.9,0.5,5),nrow=11,ncol=6,byrow=T)
-sim_settings[2,1] <- 0.4
-sim_settings[3,2] <- 0.01
-sim_settings[4,2] <- 100
-sim_settings[5,3] <- 4
-sim_settings[6,3] <- 50
-sim_settings[7,4] <- 0.5
-sim_settings[8,5] <- 0.1
-sim_settings[9,5] <- 0.9
-sim_settings[10,6] <- 1
-sim_settings[11,6] <- 3
-
-sim_settings <- matrix(c(0.5,1,20,0.5,0.1,5),nrow=11,ncol=6,byrow=T)
-sim_settings[2,1] <- 0.4
-sim_settings[3,2] <- 0.01
-sim_settings[4,2] <- 100
-sim_settings[5,3] <- 4
-sim_settings[6,3] <- 50
-sim_settings[7,4] <- 0.9
-sim_settings[8,5] <- 0.5
-sim_settings[9,5] <- 0.9
-sim_settings[10,6] <- 1
-sim_settings[11,6] <- 3
-
-
-
-library(xtable)
-
-
-all_mns <- data.frame(bocpdod_mean)
-all_se <- data.frame(bocpdod_sd)
-colnames(all_mns) <- c("TP","FP","F-score","Latency","Time (ms)")
-colnames(all_se) <- c("TP","FP","F-score","Latency","Time (ms)")
-
-inds<- expand.grid(1:nrow(all_mns),1:ncol(all_mns))
-
-mn_table <- all_mns
-sd_table <- all_se
-tab <- cbind(sim_settings,matrix(c(sapply(1:nrow(inds),function(y){
-  paste(format(as.numeric(mn_table[inds[y,1],inds[y,2]]),nsmall=2,digits=1),
-        "\\textsubscript{",
-        format(as.numeric(sd_table[inds[y,1],inds[y,2]]),nsmall=2,digits=1),"}",sep="")
-})),nrow(mn_table),ncol(mn_table)))
-
-colnames(tab) <- c("$\\mu$","$\\Lambda_0$ scale","$\\nu_0$","$\\alpha$","$p_o$","L","TP","FP","F-score","Latency","Time (ms)")
-
-cap <- "Average metrics (standard errors are in subscripts) for the simulation sensitivity
-study applied to scenario 7.\\\\"
-label <- "tab:sim_sensitivity_results"
-print(xtable(tab, type = "latex",caption=cap,label=label),
-      sanitize.text.function = identity,
-      include.rownames = FALSE,
-      caption.placement = "top",
-      table.placement="H",
-      hline.after=c(-1,0), 
-      file = paste("ss_sensitivity_metrics_table_v3.tex",sep=""),
-)
-
-
-
-
 get_metrics_from_cps <- function(cps,cpd,true_cp=181,L=5,p=0,n=270,tol=2,beta=1){
   true_cp_tol <- sort(c(true_cp-(min(1,tol):tol),true_cp,true_cp+(min(1,tol):tol)))
   true_cp_tol <- true_cp_tol[(true_cp_tol<=(n))&(true_cp_tol>(L+p))]
@@ -157,7 +84,7 @@ get_other_metrics <- function(data_all,atype){
           metrics <- get_metrics_from_cps(cp_info$ccdc_cps,cp_info$ccdc_cps+2,tol=5)
           t1 <- cp_info$ccdc_time
         }
-        if(atype=="bocpdod"){
+        if(atype=="roboBayes"){
           metrics <- get_metrics_from_cps(cp_info$bocpd_cps,cp_info$bocpd_det,tol=5)
           t1 <- cp_info$bocpd_time
           
@@ -271,28 +198,61 @@ get_summary <- function(metrics,getsd=F){
   return(cbind(TP,FP,Fb,latency,tm))
 }
 
-# Plot data generation
-npts <- 20
-yrs<- 10
-t <- seq(1,yrs*365,length.out=npts*yrs)
-Y <- generate_scenario(scenario=8,yrs,npts,noerror=F)$Y
-fullY <- generate_scenario(scenario=8,yrs,npts,noerror=T)$Y
-png("sim_example.png")
-par(mfrow=c(2,1),mar=c(2,4,2,2))
-plot(Y[,1],ylim=c(0,1),ylab="Response 1",xlab="Time point")
-lines(fullY[,1],col="blue")
-abline(v=101,col="red")
-text(x=101,y=1,labels="101",pos=4)
-legend("topright",legend=c("Changepoint","Mean process"),lty=c(1,1),col=c("red","blue"))
 
-plot(Y[,2],ylim=c(0,1),ylab="Response 2",xlab="Time point")
-lines(fullY[,2],col="blue")
-abline(v=101,col="red")
-text(x=101,y=1,labels="101",pos=4)
-dev.off()
+other_data <- list()
+for(k in seq(1,11)){
+  fn <- load(paste("results/ss",k,"sensitivity_v3.RData",sep=""))
+  other_data <- c(other_data,list(all_results))
+}
 
-set.seed(9642)
-Y <- c(rnorm(5,0,.5),rnorm(5,2,.5),rnorm(5,-3,.5))
-plot(Y,ylim=c(-4,3))
-abline(a=-2, b=0)
-abline(v=c(6,11))
+roboBayes_metrics <- get_other_metrics(other_data,atype="roboBayes")
+roboBayes_mean <- get_summary(roboBayes_metrics,getsd=F)
+roboBayes_sd <- get_summary(roboBayes_metrics,getsd=T)
+
+sim_settings <- matrix(c(0.5,1,20,0.5,0.1,5),nrow=11,ncol=6,byrow=T)
+sim_settings[2,1] <- 0.4
+sim_settings[3,2] <- 0.01
+sim_settings[4,2] <- 100
+sim_settings[5,3] <- 4
+sim_settings[6,3] <- 50
+sim_settings[7,4] <- 0.9
+sim_settings[8,5] <- 0.5
+sim_settings[9,5] <- 0.9
+sim_settings[10,6] <- 1
+sim_settings[11,6] <- 3
+
+
+
+library(xtable)
+
+
+all_mns <- data.frame(roboBayes_mean)
+all_se <- data.frame(roboBayes_sd)
+colnames(all_mns) <- c("TP","FP","F-score","Latency","Time (ms)")
+colnames(all_se) <- c("TP","FP","F-score","Latency","Time (ms)")
+
+inds<- expand.grid(1:nrow(all_mns),1:ncol(all_mns))
+
+mn_table <- all_mns
+sd_table <- all_se
+tab <- cbind(sim_settings,matrix(c(sapply(1:nrow(inds),function(y){
+  paste(format(as.numeric(mn_table[inds[y,1],inds[y,2]]),nsmall=2,digits=1),
+        "\\textsubscript{",
+        format(as.numeric(sd_table[inds[y,1],inds[y,2]]),nsmall=2,digits=1),"}",sep="")
+})),nrow(mn_table),ncol(mn_table)))
+
+colnames(tab) <- c("$\\mu$","$\\Lambda_0$ scale","$\\nu_0$","$\\alpha$","$p_o$","L","TP","FP","F-score","Latency","Time (ms)")
+
+cap <- "Average metrics (standard errors are in subscripts) for the simulation sensitivity
+study applied to scenario 7.\\\\"
+label <- "tab:sim_sensitivity_results"
+print(xtable(tab, type = "latex",caption=cap,label=label),
+      sanitize.text.function = identity,
+      include.rownames = FALSE,
+      caption.placement = "top",
+      table.placement="H",
+      hline.after=c(-1,0), 
+      file = paste("Plots/ss_sensitivity_metrics_table_v3.tex",sep=""),
+)
+
+
