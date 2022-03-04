@@ -201,7 +201,7 @@ print(xtable(tab, type = "latex",caption=cap,label=label),
       include.rownames = FALSE,
       caption.placement = "top",
       table.placement="H",
-      hline.after=c(-1,0), file = paste("myanmar_sensitivity_results_table_v3.tex",sep=""),
+      hline.after=c(-1,0), file = paste("plots/myanmar_sensitivity_results_table_v3.tex",sep=""),
 )
 
 
