@@ -1,41 +1,17 @@
-thing <- load("ss_results/ss1.RData")
-data1 <- all_results
-thing <- load("ss_results/ss2.RData")
-data2 <- all_results
-thing <- load("ss_results/ss3.RData")
-data3 <- all_results
-thing <- load("ss_results/ss4.RData")
-data4 <- all_results
-thing <- load("ss_results/ss5.RData")
-data5 <- all_results
-thing <- load("ss_results/ss6.RData")
-data6 <- all_results
-thing <- load("ss_results/ss7.RData")
-data7 <- all_results
-thing <- load("ss_results/ss8.RData")
-data8 <- all_results
-
-rbocpd_data <- list()
-for(i in 1:9){
-  fn <- load(paste("v2_results/ss",i,"rbocpdms.RData",sep=""))
-  rbocpd_data <- c(rbocpd_data,list(all_results))
-}
-
-
 bocpdms_data <- list()
 for(k in c(seq(1,4),9)){
-  fn <- load(paste("ss_rbocpdms_multi/ss",k,"bocpdms_default.RData",sep=""))
+  fn <- load(paste("results/ss",k,"bocpdms_default.RData",sep=""))
   bocpdms_data <- c(bocpdms_data,list(all_results))
 }
 
 rbocpdms_data <- list()
 for(k in seq(1,9)){
-  fn <- load(paste("ss_rbocpdms_multi/ss",k,"rbocpdms_default.RData",sep=""))
+  fn <- load(paste("results/ss",k,"rbocpdms_default.RData",sep=""))
   rbocpdms_data <- c(rbocpdms_data,list(all_results))
 }
 other_data <- list()
 for(k in seq(1,9)){
-  fn <- load(paste("v3_results/ss",k,"sim_v3.RData",sep=""))
+  fn <- load(paste("results/ss",k,"sim_v3.RData",sep=""))
   other_data <- c(other_data,list(all_results))
 }
 

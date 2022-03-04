@@ -3,11 +3,7 @@ library(parallel)
 library(bfast)
 library(MCMCpack)
 library(reticulate)
-#library(doParallel)
-#library(foreach)
-#library(future.apply)
-#library(matrixNormal)
-library(BOCPD)
+library(roboBayes)
 source("ccdc.R")
 source("sim_study_helpers.R")
 
@@ -17,46 +13,25 @@ maxiters <- 1000
 n.cores=16
 
 scens <- 1:9
-#scens <- 5:8
-#scens <- 9
 
 # which analysis to collect
 
-ft <- "sim_v2"
+ft <- "sim"
 run.BOCPDOD <- T
 run.BOCPD <- T
 run.CCDC <- T
-run.BFAST <- F
 run.BOCPDMS <- F
 run.rBOCPDMS <- F
 
-# general priors - combine all scenario info
 period=365
 
-
-#t <- seq(1,20*365,length.out=20*5)
-#X <- cbind(1,sin(2*pi*t/period)+cos(2*pi*t/period),t/1000)
 if(all(scens==1:4)){
   set.seed(3269275)
 }else{
   set.seed(45814)
 }
 
-#plan(multisession)
-
-#cl <- makeCluster(detectCores()-1)
-#registerDoParallel(cl)
-
-#cl <- parallel::makeCluster(n_cores)
-
-#doParallel::registerDoParallel(cl)
-
 for(scen in scens){
-
-####
-
-  
-#all_results <- foreach(n = 1:maxiters, .packages = c("mvtnorm","bfast","MCMCpack","reticulate"), .errorhandling="pass") %dopar% {
 all_results <- mclapply(1:maxiters,function(iter,scenario=scen){
   # initialize results list
   output <- list()
@@ -72,7 +47,7 @@ all_results <- mclapply(1:maxiters,function(iter,scenario=scen){
   make_scenario <-  generate_scenario(scenario,yrs=yrs,npts=npts,l1=10,l2=5)
   
   Y <- make_scenario$Y
-  # priors_specific <- make_scenario$priors
+  
   if(scenario <=4){
     priors_general <- get_priors(X,mu=0.5,seasonal1=0,seasonal2=0,rho=0.9)
   } 
@@ -90,9 +65,6 @@ all_results <- mclapply(1:maxiters,function(iter,scenario=scen){
     priors$V <- newV
   }
   piMine <- priors
-  #piMine$Lambda <- 0.01*priors$Lambda
-  # 
-  #priors <- get_priors(X,mu=0.5,seasonal1=0.1,seasonal2=0.04,rho=0.9)
   
   if(run.CCDC){
     # analyze using CCDC
@@ -103,23 +75,13 @@ all_results <- mclapply(1:maxiters,function(iter,scenario=scen){
     output$ccdc_time = (proc.time()-start)[3]
   }
   
-  if(run.BFAST){
-    # analyze using BFAST
-    start = proc.time()
-    bfast_results <- runBFAST(Y,t,tfreq=npts,start_cp=c(6,1))
-    output$bfast_cps = bfast_results$cps
-    output$bfast_detected = bfast_results$cp_det
-    output$bfast_time = (proc.time()-start)[3]
-  }
-
-  
   if(run.BOCPDOD){
     # analyze using BOCPD
     start=proc.time()
     
-    bocpd_mod <- bocpd(datapts = Y,
+    bocpd_mod <- roboBayes(datapts = Y,
                        covariates = X,
-                       BOCPD = NULL,
+                       RoboBayes = NULL,
                        par_inits = piMine,
                        Lsearch = 15,
                        Lwindow = 20,
@@ -149,9 +111,9 @@ all_results <- mclapply(1:maxiters,function(iter,scenario=scen){
   }
   if(run.BOCPD){
     start=proc.time()
-    bocpd_mod_no <- bocpd_mod <- bocpd(datapts = Y,
+    bocpd_mod_no <- roboBayes(datapts = Y,
                                        covariates = X,
-                                       BOCPD = NULL,
+                                       RoboBayes = NULL,
                                        par_inits = piMine,
                                        Lsearch = 15,
                                        Lwindow = 20,
@@ -178,14 +140,6 @@ all_results <- mclapply(1:maxiters,function(iter,scenario=scen){
     output$bocpd2_det=cp_info_no$cp_detected
     output$bocpd2_lat=cp_info_no$cp_lat
   }
-  
-  # analyze with robust bocpd
-  #setwd("C:/Users/Laura/Documents/GitHub/rbocpdms/rbocpdms-master")
-  
-  #write.table(Y,"C:/Users/Laura/Documents/GitHub/rbocpdms/rbocpdms-master/Data/well log/sim.txt",row.names=F,col.names=F,sep=",")
-  #setwd("C:/Users/Laura/SkyDrive/Documents/NCSU/Spring 2021/CPD/R")
-  
-  #write.table(Y,"sim.txt",row.names=F,col.names=F,sep=",")
   
   if(run.rBOCPDMS){
     assign("Y", Y, envir = globalenv())
@@ -215,47 +169,7 @@ all_results <- mclapply(1:maxiters,function(iter,scenario=scen){
   return(output)
 },mc.cores=n.cores,mc.preschedule=F)
 #}
-save(file = paste("ss",scen,ft,".RData",sep=""),list=c("all_results"))
+save(file = paste("results/ss",scen,ft,".RData",sep=""),list=c("all_results"))
 
 }
 
-#stopCluster(cl)
-
-# par(mfrow=c(2,1),mar=c(2,4,4,2))
-# #plot(Y[,1])
-# #plot(Y[,2])
-# 
-# plot(Y[,1],ylim=c(-0.2,1),xlab="Time point",ylab="Signal 1",main="Detection of simulated correlation change at 181 using both signals")
-# abline(v=unique(unlist(bocpd_mod$cp_inds))[-1],col="blue")
-# abline(v=bocpd_mod$outliers,col="red")
-# legend("bottomleft",legend=c("Multivariate analysis","Univariate Signal 1 analysis"),
-#        lty=c(1,2),col=c("blue","red"))
-# plot(Y[,2],ylim=c(-0.2,1),xlab="Time point",ylab="Signal 2")
-# abline(v=unique(unlist(bocpd_mod$cp_inds))[-1],col="blue")
-# abline(v=bocpd_mod$outliers,col="red")
-# legend("bottomleft",legend=c("Multivariate analysis","Univariate Signal 2 analysis"),
-#        lty=c(1,2),col=c("blue","red"))
-
-
-
-# make_scenario <-  generate_scenario(scenario,yrs=yrs,npts=npts,l1=10,l2=5)
-# 
-# Y <- make_scenario$Y
-# priors <- get_priors(X,mu=0.5,seasonal1=0.1,seasonal2=0.04,rho=0.9)
-# 
-# bocpd_mod <- runBOCPD(datapts=Y,
-#                       covariates=X,
-#                       hazard=function(r){geom_hazard(r,1000)},
-#                       par_inits=list(B=priors$B,
-#                                      V=priors$V,
-#                                      nu=priors$nu,
-#                                      Lambda=priors$Lambda,
-#                                      p=0, ps=0, d = 2,k=4,kt=1),
-#                       truncRthresh=1e-4,truncRmin=300,
-#                       cpthresh=0.8,cptimemin=50,Lgroup=5,Lsearch=15,
-#                       Lwindow=20,cp_delay=3,verbose=F,
-#                       getR=T,getMean=F,getR_m=T)
-# cp_info <- extract_cps(bocpd_mod, 0.8,cpmin=50)
-# cp_info
-# bocpd_mod$outliers
-# abline(v=184)

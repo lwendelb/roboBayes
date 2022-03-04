@@ -7,13 +7,7 @@ library(MCMCpack)
 library(reticulate)
 source("ccdc.R")
 source("priors_myanmar.R")
-library(BOCPD)
-# Before starting:
-## Each function will output its result to the Global Env, regardless of your
-## choice for the "saveRdata" argument.
-### The argument "priorRdata" asks if you want to load a saved Rdata file from
-### the previous chronological script.
-
+library(roboBayes)
 
 n.cores=16
 
@@ -26,35 +20,12 @@ ft <- "myanmar"
 set.seed(42)
 country <- "myanmar" #all scripts
 dataFolder <- paste0("data/", country, "/") #all scripts
-inputFolder <- "geeAll" #geeWindow or geeNewDec20
-#inputFolder <- "geeNewDec20"
-#trainingPointsFile <- "training_points_window.csv" 
-trainingPointsFile <- "training_points_all.csv"#"training_points_all.csv"
-index <- "ndvi" ## eventually to include more
-method = "har" ## method = "ccdc" or "har" [nonlinear harmonic]
-desp = "median" ## desp = "median", "Frost", "RLF", "GMfull"
-pol = "vv" ## eventually include "vh" or "ratio"
-look = "ascending" ## or "descending"
+inputFolder <- "analysis_points"
+trainingPointsFile <- "analysis_points.csv"
 
 #load pointIDs
 base <- fread(paste0(dataFolder, trainingPointsFile))
 pointids <- sort(unique(base[,pointid]))
-
-#0. Prep S1 data ####
-# MUST RUN THIS IF NEW Sentinel 1 GEE DATA
-# this consolidates all the s1 speckle filters to one table
-# file created = "sentinel1.csv"
-
-# source("scripts/0_preps1.R")
-# preps1_despeckle("myanmar", inputFolder=inputFolder)
-
-#1. cloud-masking and satellite data processing ####
-## variable created = onboard (list of 2 - some quick stats, and data for next steps)
-## file created = "sat_data_[country].Rdata"
-#source("scripts/1_cloudmasking.R")
-# F1_onboard <- onboard_cloud(country, inputFolder=inputFolder, 
-#                             pointData=trainingPointsFile,
-#                             saveRdata=FALSE)
 pointData <- trainingPointsFile
 
 
@@ -98,12 +69,9 @@ get_moddate <- function(sat_list=sat_list){
 
 df <- get_moddate(data.table(df))
 
-#2. calculate NDVI and SWIR
-# df <- F1_onboard$sat_list$l8sr
-# df <- df %>% mutate(ndvi = (B5-B4)/(B5+B4))
-# df <- df %>% mutate(swir2 = B7/1e4)
-# split into point ids for pure dataset
+
 df_pure <- df %>% mutate(goodquality=valid)
+
 #4. filter out bad qa
 df_pure <- df_pure %>% filter(goodquality)
 
@@ -120,8 +88,6 @@ df <- df %>% mutate(goodquality=valid)
 df$goodquality[corrupted] <- T
 #4. filter out bad qa
 df <- df %>% filter(goodquality)
-
-#df <- df %>% filter(valid_qa&valid_radsatqa&valid_aerosol&valid_cloudAndRadqa)
 
 #4. split into pointids and sort
 dfl <- split(df,df$pointid)
@@ -188,17 +154,6 @@ sim_settings[12,6] <- 5
 sim_settings[13,6] <- 1
 
 
-
-
-#plan(multisession)
-
-#cl <- makeCluster(detectCores()-1)
-#registerDoParallel(cl)
-
-#cl <- parallel::makeCluster(n_cores)
-
-#doParallel::registerDoParallel(cl)
-
 for(rw in 1:nrow(sim_settings)){
   lam <- sim_settings[rw,1]
   nu <- sim_settings[rw,2]
@@ -215,7 +170,6 @@ for(rw in 1:nrow(sim_settings)){
   
   
   
-  #all_results <- foreach(n = 1:maxiters, .packages = c("mvtnorm","bfast","MCMCpack","reticulate"), .errorhandling="pass") %dopar% {
   all_results <- mclapply(dfl,function(dfi){
     # initialize results list
     output <- list()
@@ -233,14 +187,11 @@ for(rw in 1:nrow(sim_settings)){
     truecp <- dfi$ti[which(dfi$date_dist<=dfi$date)[1]]
     
     
-    
-    
-    
-    # analyze using BOCPD
+    # analyze using roboBayes
     start=proc.time()
-    bocpd_mod <- bocpd(datapts = Yi,
+    bocpd_mod <- roboBayes(datapts = Yi,
                        covariates = X,
-                       BOCPD = NULL,
+                       RoboBayes = NULL,
                        par_inits = piMine,
                        Lsearch = 15,
                        Lwindow = 8,
@@ -270,6 +221,6 @@ for(rw in 1:nrow(sim_settings)){
     return(output)
   },mc.cores=n.cores,mc.preschedule=F)
   #}
-  save(file = paste("sensitivity",rw,ft,".RData",sep=""),list=c("all_results","dfl"))
+  save(file = paste("results/sensitivity",rw,ft,".RData",sep=""),list=c("all_results","dfl"))
   
 }
