@@ -244,7 +244,7 @@ tab <- cbind(sim_settings,matrix(c(sapply(1:nrow(inds),function(y){
 colnames(tab) <- c("$\\mu$","$\\Lambda_0$ scale","$\\nu_0$","$\\alpha$","$p_o$","L","TP","FP","F-score","Latency","Time (ms)")
 
 cap <- "Average metrics (standard errors are in subscripts) for the simulation sensitivity
-study applied to scenario 7.\\\\"
+study applied to Scenario 7.\\\\"
 label <- "tab:sim_sensitivity_results"
 print(xtable(tab, type = "latex",caption=cap,label=label),
       sanitize.text.function = identity,
