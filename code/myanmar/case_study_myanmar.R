@@ -18,8 +18,6 @@ ft <- "myanmar"
 run.roboBayes <- T
 run.BOCPD <- T
 run.CCDC <- T
-run.BOCPDMS <- F
-run.rBOCPDMS <- F
 
 
 # variables needed ####
@@ -222,31 +220,6 @@ all_results <- mclapply(dfl,function(dfi){
     output$bocpd2_cps=cp_info_no$cp_dates
     output$bocpd2_det=cp_info_no$cp_detected
     output$bocpd2_lat=cp_info_no$cp_lat
-  }
-  
-  # analyze with robust bocpd
-  if(run.rBOCPDMS){
-    assign("Y", Y, envir = globalenv())
-    start=proc.time()
-    py_run_file("myanmar_rbocpdms.py")
-    output$rbocpdms_time = (proc.time()-start)[3]
-    
-    rbocpdms_cps <- lapply(1:(n-1),function(i){sapply(py$detector$CPs[[i]],function(x){
-      x[[1]][1]
-    })})
-    
-    output$rbocpdms <- rbocpdms_cps
-  }
-  if(run.BOCPDMS){
-    assign("Y", Y, envir = globalenv())
-    start=proc.time()
-    py_run_file("myanmar_bocpdms.py")
-    output$bocpdms_time = (proc.time()-start)[3]
-    
-    bocpdms_cps <- lapply(1:(n-1),function(i){sapply(py$detector$CPs[[i]],function(x){
-      x[[1]][1]
-    })})
-    output$bocpdms <- bocpdms_cps
   }
   
   return(output)
