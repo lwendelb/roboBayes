@@ -1,6 +1,9 @@
 library(data.table)
 library(roboBayes)
 library(dplyr)
+library(MCMCpack)
+library(mvtnorm)
+source("code/functions/sim_study_helpers.R")
 
 ####### Figure 1: Time series of SWIR2 and NDVI with filtered points shown
 # visualization data (point 70)
@@ -140,7 +143,7 @@ dev.off()
 ####### Figure 3: Simulation signals with an outlier, run length plot, 
 # and state diagram
 
-set.seed(9264)
+set.seed(9781)
 source("code/functions/sim_study_helpers.R")
 scenario <- 7
 # generate data
@@ -159,29 +162,29 @@ rl <- c(seq(1,180),seq(1,90))
 st <- c(rep(1,180),rep(2,90))
 st[make_scenario$outlier] <- 0
 
-png("plots/simulation_data_7_signal1.png",width=4,height=1.7,units="in",res=72)
+png("plots/simulation_data_7_signal1.png",width=4,height=1.7,units="in",res=300)
 par(mfrow=c(1,1),mar=c(4,4,0.5,1.7),cex=1)
 # make labels and margins smaller
-plot(1:270,Y[,1],ylab="Signal 1",xaxt="n",xlab="",pch=20)
+plot(1:270,Y[,1],ylab="Signal 1",xaxt="n",xlab="",pch=20,cex=0.7)
 text(make_scenario$outlier,0.78,"outlier",pos=4)
 text(300,0.8,"(a)",xpd=NA)
 dev.off()
 
-png("plots/simulation_data_7_state.png",width=4,height=1.7,units="in",res=72)
+png("plots/simulation_data_7_state.png",width=4,height=1.7,units="in",res=300)
 par(mfrow=c(1,1),mar=c(4,4,0.5,1.7),cex=1)
-plot(1:270,st,type="l",ylim=c(0,3),yaxt='n',ylab="State",xaxt="n",xlab="")
+plot(1:270,st,type="l",ylim=c(0,3),yaxt='n',ylab="State",xaxt="n",xlab="",cex=0.7)
 axis(2,at=c(0,1,2))
 text(300,3,"(b)",xpd=NA)
 dev.off()
 
-png("plots/simulation_data_7_signal2.png",width=4,height=1.7,units="in",res=72)
+png("plots/simulation_data_7_signal2.png",width=4,height=1.7,units="in",res=300)
 par(mfrow=c(1,1),mar=c(4,4,0.5,1.7),cex=1)
-plot(1:270,Y[,2],ylab="Signal 2",xlab="Time Point",pch=20)
+plot(1:270,Y[,2],ylab="Signal 2",xlab="Time Point",pch=20,cex=0.7)
 text(make_scenario$outlier,0.14,"outlier",pos=4)
 text(300,0.65,"(c)",xpd=NA)
 dev.off()
 
-png("plots/simulation_data_7_rl.png",width=4,height=1.7,units="in",res=72)
+png("plots/simulation_data_7_rl.png",width=4,height=1.7,units="in",res=300)
 par(mfrow=c(1,1),mar=c(4,4,0.5,1.7),cex=1)
 plot(rl,type='l',ylab="Run length",xlab="Time Point")
 text(300,180,"(d)",xpd=NA)
